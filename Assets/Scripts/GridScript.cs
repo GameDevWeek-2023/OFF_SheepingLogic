@@ -64,18 +64,13 @@ public class GridScript : MonoBehaviour
             building_cursor.transform.position = pos;     
 
             // if the mouse button is being pressed, additionally place object at position.
-            if(Input.GetMouseButton(0)){
+            // Debug.Log(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0));
+
+            if(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)){
                 
-                //building_cursor.SetActive(false);
-            
-                
+                building_cursor.SetActive(false);
 
                 GameObject newObject = Instantiate(building_to_spawn, pos, Quaternion.identity);
-
-                // List<GameObject> neighbours_list = ReturnNeighbours(grid_pos); 
-
-                // newObject.GetComponent<BuildingScript>().SetParams(grid_pos, );
-
 
                 buildings.Add(newObject);
             
@@ -128,8 +123,16 @@ public class GridScript : MonoBehaviour
 
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            Vector3 pos = hit.collider.gameObject.transform.position;
-            return ReturnGridCoordinate(pos);
+            if (hit.collider.gameObject.tag == "Terrain")
+            {
+                Vector3 pos = hit.point;
+                return ReturnGridCoordinate(pos);
+            }
+            else
+            {
+                Vector3 pos = hit.collider.gameObject.transform.position;
+                return ReturnGridCoordinate(pos);
+            }
 
         }
         else
