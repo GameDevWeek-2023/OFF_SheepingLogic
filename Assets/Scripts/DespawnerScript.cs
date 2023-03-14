@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class DespawnerScript : Building
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -24,5 +13,10 @@ public class DespawnerScript : Building
     public override float GetSpawnHeight()
     {
         return 1.4f;
+    }
+
+    public override int GetCost()
+    {
+        return 10;
     }
 }

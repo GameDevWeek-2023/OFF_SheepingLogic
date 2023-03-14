@@ -9,4 +9,5 @@ public abstract class Building : MonoBehaviour
 
     public abstract float GetSpawnHeight();
 
+    public abstract int GetCost();
 }

@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class ConveyorScript : Building
 {
+    public override int GetCost()
+    {
+        return 1;
+    }
 
     public override float GetSpawnHeight()
     {
         return 0.0f;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
 }

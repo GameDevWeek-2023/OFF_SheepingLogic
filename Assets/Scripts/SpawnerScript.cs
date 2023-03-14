@@ -33,4 +33,9 @@ public class SpawnerScript : Building
     {
         return 1.4f;
     }
+
+    public override int GetCost()
+    {
+        return 10;
+    }
 }

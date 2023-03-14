@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GridScript : MonoBehaviour
 {
@@ -10,21 +12,33 @@ public class GridScript : MonoBehaviour
     public GameObject spawner_build;
     public GameObject despawner_build;
 
+    public int money_initial;
+    public TMP_Text money_text;
+
+    int money_amt;
+    
     List<GameObject> buildings;
     GameObject building_to_spawn;
     GameObject building_cursor;
     Quaternion rotation = Quaternion.identity;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         buildings = new List<GameObject>();
         SetBuildingConveyor();
+        money_amt = money_initial;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        // TODO this doesnt belong here
+        money_text.text = System.Convert.ToString(money_amt);
 
         if (Input.GetKeyDown(KeyCode.E)) { 
             rotation *= Quaternion.Euler(0.0f, 90.0f, 0.0f);
@@ -46,15 +60,22 @@ public class GridScript : MonoBehaviour
             if(MouseGridposIsFree(out (int, int) _))
             {
                 
-                Vector3 pos = GridPosToWorldspace(grid_position);
-                Vector3 spawnpos =  pos 
-                    + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
-    
-                GameObject newObject = Instantiate(building_to_spawn, spawnpos, rotation);
-                newObject.GetComponent<Building>().grid_position = grid_position;
-                
-                buildings.Add(newObject);
-            
+                int cost = building_to_spawn.GetComponent<Building>().GetCost(); 
+
+                if (cost <= money_amt)
+                {
+
+                    money_amt -= cost;
+
+                    Vector3 pos = GridPosToWorldspace(grid_position);
+                    Vector3 spawnpos =  pos 
+                        + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+        
+                    GameObject newObject = Instantiate(building_to_spawn, spawnpos, rotation);
+                    newObject.GetComponent<Building>().grid_position = grid_position;
+                    
+                    buildings.Add(newObject);
+                }
             }
         }
     }
