@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridScript : MonoBehaviour
 {
 
-    float resolution = 1.0f;
+    public float resolution = 1.0f;
 
     List<GameObject> buildings;
     public GameObject building_to_spawn;
@@ -29,32 +29,11 @@ public class GridScript : MonoBehaviour
         float z = resolution * ((float) grid_pos.Item2);
         return new Vector3(x, 0.0f, z);
     }
-    /*
-    void OnMouseDown()
-    {
-
-        (int, int) grid_pos = GetMouseGridpos();
-        building_cursor.SetActive(false);
-
-        if(CheckPosIsFree(grid_pos))
-        {
-
-            Vector3 pos = GridPosToWorldspace(grid_pos);
-
-            GameObject newObject = Instantiate(building_to_spawn, pos, Quaternion.identity);
-
-            buildings.Add(newObject);
-        
-        }
-    
-    }
-    */
 
     void OnMouseOver()
     {
-        (int, int) grid_pos = GetMouseGridpos();
-
-        if(CheckPosIsFree(grid_pos))
+        
+        if(GetMouseGridpos(out (int, int) grid_pos))
         {
             
             Vector3 pos = GridPosToWorldspace(grid_pos);
@@ -63,19 +42,11 @@ public class GridScript : MonoBehaviour
 
             building_cursor.transform.position = pos;     
 
-            // if the mouse button is being pressed, additionally place object at position.
-            if(Input.GetMouseButton(0)){
+            if(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)){
                 
-                //building_cursor.SetActive(false);
-            
-                
+                building_cursor.SetActive(false);
 
                 GameObject newObject = Instantiate(building_to_spawn, pos, Quaternion.identity);
-
-                // List<GameObject> neighbours_list = ReturnNeighbours(grid_pos); 
-
-                // newObject.GetComponent<BuildingScript>().SetParams(grid_pos, );
-
 
                 buildings.Add(newObject);
             
@@ -119,7 +90,7 @@ public class GridScript : MonoBehaviour
 
     }
 
-    (int, int) GetMouseGridpos()
+    bool GetMouseGridpos(out (int, int) pos)
     {
         
         Vector3 mouse = Input.mousePosition;
@@ -128,13 +99,22 @@ public class GridScript : MonoBehaviour
 
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            Vector3 pos = hit.collider.gameObject.transform.position;
-            return ReturnGridCoordinate(pos);
+            if (hit.collider.gameObject.tag == "Terrain")
+            {
+                pos = ReturnGridCoordinate(hit.point);
+                return true;
+            }
+            else
+            {
+                pos = hit.collider.gameObject.GetComponent<BuildingScript>().grid_position;
+                return false;
+            }
 
         }
         else
         {
-           return (0,0);
+            pos = (0, 0);
+            return false;
         }
         
     }
