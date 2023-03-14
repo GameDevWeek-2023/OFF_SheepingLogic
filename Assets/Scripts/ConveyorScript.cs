@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingScript : MonoBehaviour
+public class ConveyorScript : Building
 {
 
-    public (int, int) grid_position;
+    public override float GetSpawnHeight()
+    {
+        return 0.0f;
+    }
 
-    GameObject previousBuilding = null;
-    GameObject nextBuilding = null; 
-    
     // Start is called before the first frame update
     void Start()
     {

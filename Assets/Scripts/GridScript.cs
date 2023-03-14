@@ -6,16 +6,20 @@ public class GridScript : MonoBehaviour
 {
 
     public float resolution;
+    public GameObject conveyor_build;
+    public GameObject spawner_build;
+    public GameObject despawner_build;
 
     List<GameObject> buildings;
-    public GameObject building_to_spawn;
-    public GameObject building_cursor;
+    GameObject building_to_spawn;
+    GameObject building_cursor;
     Quaternion rotation = Quaternion.identity;
 
     // Start is called before the first frame update
     void Start()
     {
         buildings = new List<GameObject>();
+        SetBuildingConveyor();
     }
 
     // Update is called once per frame
@@ -43,9 +47,12 @@ public class GridScript : MonoBehaviour
             {
                 
                 Vector3 pos = GridPosToWorldspace(grid_position);
-                GameObject newObject = Instantiate(building_to_spawn, pos, rotation);
-
+                
+                GameObject newObject = Instantiate(building_to_spawn, pos + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), 0.0f), rotation);
+                newObject.GetComponent<Building>().grid_position = grid_position;
+                
                 buildings.Add(newObject);
+            
             }
         }
     }
@@ -80,7 +87,7 @@ public class GridScript : MonoBehaviour
     {
         foreach (GameObject b in buildings)
         {
-            if (b.GetComponent<BuildingScript>().grid_position == pos) { return false; }
+            if (b.GetComponent<Building>().grid_position == pos) { return false; }
         }
 
         return true;
@@ -94,7 +101,7 @@ public class GridScript : MonoBehaviour
 
         foreach (GameObject b in buildings)
         {
-            (int, int) b_pos = b.GetComponent<BuildingScript>().grid_position; 
+            (int, int) b_pos = b.GetComponent<Building>().grid_position; 
 
             if (-1 <= b_pos.Item1 - grid_pos.Item1 && b_pos.Item1 - grid_pos.Item1 <= 1
              && -1 <= b_pos.Item1 - grid_pos.Item1 && b_pos.Item1 - grid_pos.Item1 <= 1)
@@ -123,7 +130,15 @@ public class GridScript : MonoBehaviour
             }
             else
             {
-                pos = hit.collider.gameObject.GetComponent<BuildingScript>().grid_position;
+                if (hit.collider.gameObject.GetComponent<Building>() == null)
+                {
+                    pos = (0,0);
+                    
+                }
+                else
+                {
+                    pos = hit.collider.gameObject.GetComponent<Building>().grid_position;
+                }
                 return false;
             }
 
@@ -146,4 +161,21 @@ public class GridScript : MonoBehaviour
     
     }
 
+    public void SetBuildingConveyor()
+    {
+        building_to_spawn = conveyor_build;
+        building_cursor = Instantiate(conveyor_build, Vector3.zero, Quaternion.identity);
+    }
+
+    public void SetBuildingSpawner()
+    {
+        building_to_spawn = spawner_build;
+        building_cursor = Instantiate(spawner_build, Vector3.zero, Quaternion.identity);
+    }    
+    
+    public void SetBuildingDespawner()
+    {
+        building_to_spawn = despawner_build;
+        building_cursor = Instantiate(despawner_build, Vector3.zero, Quaternion.identity);
+    }
 }

@@ -22,9 +22,6 @@ public class SheeplikeScript : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(gameObject.transform.position, -transform.up, out hit, Mathf.Infinity))
         {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            
             GameObject go = hit.collider.gameObject;
 
             if (go.tag == "Building")
@@ -32,9 +29,8 @@ public class SheeplikeScript : MonoBehaviour
 
                 Vector3 delta = gameObject.transform.position - go.transform.position;
                 float innerp = Vector3.Dot(delta, go.transform.right);
-                Debug.Log(innerp);
 
-                float tolerance = 0.0001f;
+                float tolerance = 0.001f;
                 if (innerp < tolerance && innerp > -tolerance)
                 {
                     gameObject.transform.position += go.transform.forward * velocity * Time.deltaTime;
@@ -53,11 +49,14 @@ public class SheeplikeScript : MonoBehaviour
     {
         Rigidbody rbdy = collision.gameObject.GetComponent<Rigidbody>();
 
-        //Stop Moving/Translating
-        rbdy.velocity = Vector3.zero;
+        if (rbdy != null)
+        {
+            //Stop Moving/Translating
+            rbdy.velocity = Vector3.zero;
 
-        //Stop rotating
-        rbdy.angularVelocity = Vector3.zero;
+            //Stop rotating
+            rbdy.angularVelocity = Vector3.zero;
+        }
     }
 
 }

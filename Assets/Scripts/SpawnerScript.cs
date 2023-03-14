@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerScript : MonoBehaviour
+public class SpawnerScript : Building
 {
 
     float last_spawn_time;
@@ -27,5 +27,10 @@ public class SpawnerScript : MonoBehaviour
             last_spawn_time = t;
             Instantiate(spawn_object, gameObject.transform.position + gameObject.transform.forward, Quaternion.identity);
         }
+    }
+
+    public override float GetSpawnHeight()
+    {
+        return 1.4f;
     }
 }
