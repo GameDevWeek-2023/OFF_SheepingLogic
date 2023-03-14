@@ -20,7 +20,23 @@ public class GridScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        {
+            (int, int) grid_position = ReturnGridCoordinate(building_cursor.transform.position);
+            building_cursor.SetActive(false);
+            Debug.Log(grid_position);
+
+            // here we discard the position of the mouse in favour of the cursor position.
+            if(GetMouseGridpos(out (int, int) _))
+            {
+                
+                Vector3 pos = GridPosToWorldspace(grid_position);
+                GameObject newObject = Instantiate(building_to_spawn, pos, Quaternion.identity);
+
+                buildings.Add(newObject);
+            }
+        }
     }
 
     Vector3 GridPosToWorldspace((int, int) grid_pos)
@@ -41,16 +57,6 @@ public class GridScript : MonoBehaviour
             building_cursor.SetActive(true);
 
             building_cursor.transform.position = pos;     
-
-            if(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)){
-                
-                building_cursor.SetActive(false);
-
-                GameObject newObject = Instantiate(building_to_spawn, pos, Quaternion.identity);
-
-                buildings.Add(newObject);
-            
-            }
             
         }
         else
