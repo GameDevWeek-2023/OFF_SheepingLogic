@@ -47,8 +47,10 @@ public class GridScript : MonoBehaviour
             {
                 
                 Vector3 pos = GridPosToWorldspace(grid_position);
-                
-                GameObject newObject = Instantiate(building_to_spawn, pos + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), 0.0f), rotation);
+                Vector3 spawnpos =  pos 
+                    + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+    
+                GameObject newObject = Instantiate(building_to_spawn, spawnpos, rotation);
                 newObject.GetComponent<Building>().grid_position = grid_position;
                 
                 buildings.Add(newObject);
@@ -74,7 +76,9 @@ public class GridScript : MonoBehaviour
             
             building_cursor.SetActive(true);
 
-            building_cursor.transform.position = pos;     
+            building_cursor.transform.position = pos 
+                + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+    
             
         }
         else
@@ -165,17 +169,20 @@ public class GridScript : MonoBehaviour
     {
         building_to_spawn = conveyor_build;
         building_cursor = Instantiate(conveyor_build, Vector3.zero, Quaternion.identity);
+        building_cursor.GetComponent<BoxCollider>().enabled = false;
     }
 
     public void SetBuildingSpawner()
     {
         building_to_spawn = spawner_build;
         building_cursor = Instantiate(spawner_build, Vector3.zero, Quaternion.identity);
+        building_cursor.GetComponent<BoxCollider>().enabled = false;
     }    
     
     public void SetBuildingDespawner()
     {
         building_to_spawn = despawner_build;
         building_cursor = Instantiate(despawner_build, Vector3.zero, Quaternion.identity);
+        building_cursor.GetComponent<BoxCollider>().enabled = false;
     }
 }
