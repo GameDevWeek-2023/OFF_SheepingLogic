@@ -22,12 +22,5 @@ public class BuildingScript : MonoBehaviour
         
     }
 
-    void SetParams((int, int) grid_position, GameObject previousBuilding, GameObject nextBuilding)
-    {
-        this.grid_position = grid_position;
-        this.previousBuilding = previousBuilding;
-        this.nextBuilding = nextBuilding;
-
-    }   
 
 }
