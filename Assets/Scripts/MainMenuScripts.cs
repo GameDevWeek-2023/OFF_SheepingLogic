@@ -7,21 +7,25 @@ using UnityEngine.UI;
 public class MainMenuScripts : MonoBehaviour
 {
     public GameObject blackPanel;
-    private bool fadeScreen = false;
+    public Button playButton;
+        
+    private void Start()
+    {
+        blackPanel.SetActive(false);
+        blackPanel.GetComponent<CanvasRenderer>().SetAlpha(0);
+        playButton.onClick.AddListener(() => StartCoroutine("GoToScene"));
+    }
 
     private void Update()
     {
-        if (fadeScreen)
-        {
-            blackPanel.GetComponent<Image>().CrossFadeAlpha(1, 2.0f, false);
-        }
-
     }
 
-    public void GoToScene(string sceneName)
+    public IEnumerator GoToScene()
     {
-        fadeScreen= true;
-        SceneManager.LoadScene(sceneName);
+        blackPanel.SetActive(true);
+        blackPanel.GetComponent<Image>().CrossFadeAlpha(1, 1.0f, false);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync("SampleScene");
     }
 
     public void ExitGame()
