@@ -51,6 +51,11 @@ public class GridScript : MonoBehaviour
             building_cursor.transform.rotation = rotation;
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            MouseGridposIsFree(out (int, int) _, true);
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
             (int, int) grid_position = ReturnGridCoordinate(building_cursor.transform.position);
@@ -139,7 +144,7 @@ public class GridScript : MonoBehaviour
 
     }
 
-    bool MouseGridposIsFree(out (int, int) pos)
+    bool MouseGridposIsFree(out (int, int) pos, bool delete=false)
     {
         
         Vector3 mouse = Input.mousePosition;
@@ -162,7 +167,8 @@ public class GridScript : MonoBehaviour
                 }
                 else
                 {
-                    pos = hit.collider.gameObject.GetComponent<Building>().grid_position;
+                    if (delete) { Object.Destroy(hit.collider.gameObject); pos = (0,0); return true; }
+                    else        {pos = hit.collider.gameObject.GetComponent<Building>().grid_position; }
                 }
                 return false;
             }
