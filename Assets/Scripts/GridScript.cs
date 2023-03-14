@@ -5,11 +5,12 @@ using UnityEngine;
 public class GridScript : MonoBehaviour
 {
 
-    public float resolution = 1.0f;
+    public float resolution;
 
     List<GameObject> buildings;
     public GameObject building_to_spawn;
     public GameObject building_cursor;
+    Quaternion rotation = Quaternion.identity;
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +22,28 @@ public class GridScript : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.E)) { 
+            rotation *= Quaternion.Euler(0.0f, 90.0f, 0.0f);
+        }
+        if (Input.GetKeyDown(KeyCode.Q)) { 
+            rotation *= Quaternion.Euler(0.0f, -90.0f, 0.0f);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E)) {
+            building_cursor.transform.rotation = rotation;
+        }
+
+        if(Input.GetMouseButtonDown(0))
         {
             (int, int) grid_position = ReturnGridCoordinate(building_cursor.transform.position);
             building_cursor.SetActive(false);
-            Debug.Log(grid_position);
 
             // here we discard the position of the mouse in favour of the cursor position.
-            if(GetMouseGridpos(out (int, int) _))
+            if(MouseGridposIsFree(out (int, int) _))
             {
                 
                 Vector3 pos = GridPosToWorldspace(grid_position);
-                GameObject newObject = Instantiate(building_to_spawn, pos, Quaternion.identity);
+                GameObject newObject = Instantiate(building_to_spawn, pos, rotation);
 
                 buildings.Add(newObject);
             }
@@ -49,7 +60,7 @@ public class GridScript : MonoBehaviour
     void OnMouseOver()
     {
         
-        if(GetMouseGridpos(out (int, int) grid_pos))
+        if(MouseGridposIsFree(out (int, int) grid_pos))
         {
             
             Vector3 pos = GridPosToWorldspace(grid_pos);
@@ -96,7 +107,7 @@ public class GridScript : MonoBehaviour
 
     }
 
-    bool GetMouseGridpos(out (int, int) pos)
+    bool MouseGridposIsFree(out (int, int) pos)
     {
         
         Vector3 mouse = Input.mousePosition;
