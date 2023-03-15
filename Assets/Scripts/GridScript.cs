@@ -231,12 +231,7 @@ public class GridScript : MonoBehaviour
         building_cursor.GetComponent<Building>().enabled = false;
     }
 
-    /*public void SetBuildingConveyor()
-    {
-        building_to_spawn = conveyor_build;
-        building_cursor = Instantiate(conveyor_build, Vector3.zero, Quaternion.identity);
-        building_cursor.GetComponent<BoxCollider>().enabled = false;
-    }
+    public void IncrementResearch() { researchLevel++; }
 
     public void SetBuildingSpawner()
     {
@@ -250,7 +245,7 @@ public class GridScript : MonoBehaviour
         building_to_spawn = despawner_build;
         building_cursor = Instantiate(despawner_build, Vector3.zero, Quaternion.identity);
         building_cursor.GetComponent<BoxCollider>().enabled = false;
-    }*/
+    }
     public void NeueAufgabe()
     {
         switch(aufgabenNummer)
