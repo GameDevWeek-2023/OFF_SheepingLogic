@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-
+    [SerializeField] Camera camera;
     Vector3 forw;
     float pan_velocity = 10.0f;
     float scroll_velocity = 10.0f;
@@ -12,14 +12,14 @@ public class CameraMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // forward in world coordinates:
         // https://forum.unity.com/threads/move-camera-forward-in-world-coordinates-using-local-direction.164717/
         forw = transform.forward;
  
-        //get forward in world coords
+        /*get forward in world coords
         forw = transform.InverseTransformDirection(forw);
-        
+        */
+
         //remove the y component (up down rotation)
         forw.y = 0;
         forw.Normalize();
