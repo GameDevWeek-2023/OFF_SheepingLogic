@@ -12,17 +12,34 @@ public class GridScript : MonoBehaviour
     public GameObject conveyor_build;
     public GameObject spawner_build;
     public GameObject despawner_build;
+    [SerializeField] TMP_Text aufgabenText;
 
     public int money_initial;
     public TMP_Text money_text;
 
     int money_amt;
+    int aufgabenNummer = 1;
     
     public float sell_fraction;
 
     int researchLevel;
     int spirits;
-    
+
+    #region Aufgabenvariablen
+    int[] erforderlicheResourcen = new int [7];
+    #endregion
+
+    #region Spielerfortschritt
+    int gesammelteSchafe;
+    int gesammelteSchwarzeSchafe;
+    int gesammelteWolle;
+    int gesammelterStrom;
+    int gesammelteTeddybären;
+    int geopferteTiere;
+    int tierVersuche;
+
+    #endregion
+
     List<GameObject> buildings;
     GameObject building_to_spawn;
     GameObject building_cursor;
@@ -39,7 +56,9 @@ public class GridScript : MonoBehaviour
         buildings = new List<GameObject>();
         SetBuilding(initial_building);
         money_amt = money_initial;
-        
+        NeueAufgabe();
+        AktualisiereAufgabenText();
+
     }
 
     // Update is called once per frame
@@ -232,4 +251,61 @@ public class GridScript : MonoBehaviour
         building_cursor = Instantiate(despawner_build, Vector3.zero, Quaternion.identity);
         building_cursor.GetComponent<BoxCollider>().enabled = false;
     }*/
+    public void NeueAufgabe()
+    {
+        switch(aufgabenNummer)
+        {
+            case 1:
+                erforderlicheResourcen = new int[] {12,0,0,0,0,0,0};
+                break;
+            default:
+                //Spiel gewonnen
+                break;
+        }
+    }
+
+    public void AktualisiereAufgabenText()
+    {
+        string aufgaben = "Aufgaben:\n";
+        if (erforderlicheResourcen[0]!=0)
+        {
+            aufgaben += (erforderlicheResourcen[0] <= gesammelteSchafe ? "- [x]" : "- [ ]") + $"Liefere {erforderlicheResourcen[0]} Schafe ({gesammelteSchafe}/{erforderlicheResourcen[0]})";
+        }
+        if (erforderlicheResourcen[1] != 0)
+        {
+            aufgaben += (erforderlicheResourcen[1] <= gesammelteSchwarzeSchafe ? "- [x]" : "- [ ]") + $"Liefere {erforderlicheResourcen[1]} schwarze Schafe ({gesammelteSchwarzeSchafe}/{erforderlicheResourcen[1]})";
+        }
+        if (erforderlicheResourcen[2] != 0)
+        {
+            aufgaben += (erforderlicheResourcen[2] <= gesammelteWolle ? "- [x]" : "- [ ]") + $"Liefere {erforderlicheResourcen[2]} Wolle ({gesammelteWolle}/{erforderlicheResourcen[2]})";
+        }
+        if (erforderlicheResourcen[3] != 0)
+        {
+            aufgaben += (erforderlicheResourcen[3] <= gesammelterStrom ? "- [x]" : "- [ ]") + $"Erzeuge {erforderlicheResourcen[3]} Strom ({gesammelterStrom}/{erforderlicheResourcen[3]})";
+        }
+        if (erforderlicheResourcen[4] != 0)
+        {
+            aufgaben += (erforderlicheResourcen[4] <= gesammelteTeddybären ? "- [x]" : "- [ ]") + $"Liefer {erforderlicheResourcen[4]} Teddybären ({gesammelteTeddybären}/{erforderlicheResourcen[4]})";
+        }
+        if (erforderlicheResourcen[5] != 0)
+        {
+            aufgaben += (erforderlicheResourcen[5] <= geopferteTiere ? "- [x]" : "- [ ]") + $"Opfer {erforderlicheResourcen[5]} Tiere ({geopferteTiere}/{erforderlicheResourcen[5]})";
+        }
+        if (erforderlicheResourcen[6] != 0)
+        {
+            aufgaben += (erforderlicheResourcen[6] <= tierVersuche ? "- [x]" : "- [ ]") + $"Experimentiere mit {erforderlicheResourcen[6]} Schafen ({tierVersuche}/{erforderlicheResourcen[6]})";
+        }
+        aufgabenText.text = aufgaben;
+    }
+    public void Aufgabenfortschritt()
+    {
+        int[] array = {gesammelteSchafe,gesammelteSchwarzeSchafe,gesammelteWolle,gesammelterStrom,gesammelteTeddybären,geopferteTiere,tierVersuche};
+
+        if (gesammelteSchafe > erforderlicheResourcen[0] && gesammelteSchwarzeSchafe> erforderlicheResourcen[1] && gesammelteWolle> erforderlicheResourcen[2]&&gesammelterStrom > erforderlicheResourcen[3]&& gesammelteTeddybären > erforderlicheResourcen[4]&& geopferteTiere > erforderlicheResourcen[5]&& tierVersuche > erforderlicheResourcen[6])
+        {
+            aufgabenNummer++;
+            NeueAufgabe();
+            AktualisiereAufgabenText();
+        }
+    }
 }
