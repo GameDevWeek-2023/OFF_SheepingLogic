@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GridScript : MonoBehaviour
 {
@@ -22,13 +23,16 @@ public class GridScript : MonoBehaviour
     GameObject building_cursor;
     Quaternion rotation = Quaternion.identity;
 
+    public GameObject initial_building;
+
+    public bool isOverGUI = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         buildings = new List<GameObject>();
-        SetBuildingConveyor();
+        SetBuilding(initial_building);
         money_amt = money_initial;
 
     }
@@ -63,9 +67,14 @@ public class GridScript : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-
-            if(MouseGridposIsFree(out (int, int) grid_pos))
+            if (EventSystem.current.IsPointerOverGameObject()) //might not be ideal, but works
             {
+                Debug.Log("UI clicked");
+                isOverGUI = true;
+            }
+            else if(MouseGridposIsFree(out (int, int) grid_pos))
+            {
+                isOverGUI = false;
 
                 building_cursor.SetActive(false);
 
@@ -86,6 +95,10 @@ public class GridScript : MonoBehaviour
                     buildings.Add(newObject);
                 }
 
+            }
+            else
+            {
+                isOverGUI = false;
             }
 
         }
@@ -182,8 +195,16 @@ public class GridScript : MonoBehaviour
         return new Vector3(x, 0.0f, z);
     }
 
+    public void SetBuilding(GameObject building)
+    {
+        Object.Destroy(building_cursor);
+        building_to_spawn = building;
+        building_cursor = Instantiate(building, Vector3.zero, Quaternion.identity);
+        building_cursor.GetComponent<BoxCollider>().enabled = false;
+        building_cursor.GetComponent<Building>().enabled = false;
+    }
 
-    public void SetBuildingConveyor()
+    /*public void SetBuildingConveyor()
     {
         building_to_spawn = conveyor_build;
         building_cursor = Instantiate(conveyor_build, Vector3.zero, Quaternion.identity);
@@ -202,5 +223,5 @@ public class GridScript : MonoBehaviour
         building_to_spawn = despawner_build;
         building_cursor = Instantiate(despawner_build, Vector3.zero, Quaternion.identity);
         building_cursor.GetComponent<BoxCollider>().enabled = false;
-    }
+    }*/
 }
