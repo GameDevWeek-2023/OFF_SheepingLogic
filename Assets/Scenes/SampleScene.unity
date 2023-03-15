@@ -2300,7 +2300,7 @@ GameObject:
   - component: {fileID: 1802377675}
   - component: {fileID: 1802377674}
   - component: {fileID: 1802377677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -2382,7 +2382,7 @@ MonoBehaviour:
   resolution: 2
   conveyor_build: {fileID: 1136049025606419880, guid: 3ef8b476eaeb4d22c8c460709d91cc85,
     type: 3}
-  spawner_build: {fileID: 2071225150616166969, guid: 39eaac713cb7fda4d80894b9656e4d98,
+  spawner_build: {fileID: 4678845613914675386, guid: ddc59df5a4106626ba4f19dd42fa6c48,
     type: 3}
   despawner_build: {fileID: 1447486957014690130, guid: f339744bfc3f8e01c9cad52e709c6871,
     type: 3}

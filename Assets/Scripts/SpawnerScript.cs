@@ -25,13 +25,15 @@ public class SpawnerScript : Building
         if (t - last_spawn_time > spawn_interval)
         {
             last_spawn_time = t;
-            Instantiate(spawn_object, gameObject.transform.position + gameObject.transform.forward, Quaternion.identity);
+            Instantiate(spawn_object,
+                gameObject.transform.position + gameObject.transform.forward + new Vector3(0.0f, 1.0f, 0.0f),
+                Quaternion.identity);
         }
     }
 
     public override float GetSpawnHeight()
     {
-        return 1.4f;
+        return 0.0f;
     }
 
     public override int GetCost()

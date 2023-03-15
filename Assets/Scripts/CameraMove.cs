@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    [SerializeField] Camera camera;
+    
     Vector3 forw;
     float pan_velocity = 10.0f;
     float scroll_velocity = 10.0f;
