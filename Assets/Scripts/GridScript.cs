@@ -17,6 +17,9 @@ public class GridScript : MonoBehaviour
     public TMP_Text money_text;
 
     int money_amt;
+    
+    public float sell_fraction;
+
     int researchLevel;
     int spirits;
     
@@ -173,6 +176,7 @@ public class GridScript : MonoBehaviour
         {
             // remove from buildings && delete
 
+            money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().GetCost() * sell_fraction);
             buildings.Remove(ob_delete);
             Object.Destroy(ob_delete);
             

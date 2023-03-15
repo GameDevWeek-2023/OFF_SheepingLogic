@@ -1322,7 +1322,7 @@ MonoBehaviour:
         m_MethodName: SetBuilding
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2071225150616166969, guid: 39eaac713cb7fda4d80894b9656e4d98,
+          m_ObjectArgument: {fileID: 4678845613914675386, guid: ddc59df5a4106626ba4f19dd42fa6c48,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -3071,6 +3071,7 @@ MonoBehaviour:
     type: 3}
   money_initial: 100
   money_text: {fileID: 137725296}
+  sell_fraction: 0.75
   initial_building: {fileID: 1136049025606419880, guid: 3ef8b476eaeb4d22c8c460709d91cc85,
     type: 3}
   isOverGUI: 0
