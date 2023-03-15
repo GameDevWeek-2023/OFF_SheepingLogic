@@ -208,9 +208,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4678845613914675386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c469b7536fc12cb22a87e674763f4125, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b74271fbd326e5e974b6ad78fe6f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn_interval: 10
+  building_height: 0
+  building_cost: 0
+  spawn_height: 1
+  spawn_delay: 5
   spawn_object: {fileID: 1451022317642717752, guid: 4aa4a8f6059f9df4689b577ce418aee3,
     type: 3}
