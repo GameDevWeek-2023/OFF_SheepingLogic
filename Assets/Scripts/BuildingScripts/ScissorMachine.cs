@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScissorMachine : Spawner
 {
 
+    public GameObject geschorenes_schaf;
+
     void OnCollisionEnter(Collision collision)
     {
 
@@ -21,7 +23,7 @@ public class ScissorMachine : Spawner
         yield return new WaitForSeconds(spawn_delay);
 
         gob.SetActive(true);
-        Spawn(gob, gameObject.transform.forward);
+        Spawn(geschorenes_schaf, gameObject.transform.forward);
         Destroy(gob);
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Splitter : Spawner
 {
 
+    int direction = 1; 
 
     void OnCollisionEnter(Collision collision)
     {
@@ -19,8 +20,8 @@ public class Splitter : Spawner
         yield return new WaitForSeconds(spawn_delay);
 
         gob.SetActive(true);
-        Spawn(gob, gameObject.transform.right);
-        Spawn(gob, -gameObject.transform.right);
+        Spawn(gob, direction * gameObject.transform.right);
+        direction *= -1;
         Destroy(gob);
         
     }

@@ -26,6 +26,7 @@ public class SheeplikeScript : MonoBehaviour
 
             if (go.tag == "Building")
             {
+                transform.forward = go.transform.forward;
 
                 Vector3 delta = gameObject.transform.position - go.transform.position;
                 float innerp = Vector3.Dot(delta, go.transform.right);

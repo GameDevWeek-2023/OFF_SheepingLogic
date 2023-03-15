@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building_height: 0
-  building_cost: 0
-  spawn_height: 1
+  building_cost: 10
+  spawn_height: 0.6
   spawn_delay: 3
+  geschorenes_schaf: {fileID: 2926049314989150554, guid: a40107cc2144ac636905bc7915e2426a,
+    type: 3}
