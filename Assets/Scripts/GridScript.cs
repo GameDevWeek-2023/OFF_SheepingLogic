@@ -56,15 +56,19 @@ public class GridScript : MonoBehaviour
             MouseGridposIsFree(out (int, int) _, true);
         }
 
+        if (!MouseGridposIsFree(out (int, int) _))
+        {
+            building_cursor.SetActive(false);
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
-            (int, int) grid_position = ReturnGridCoordinate(building_cursor.transform.position);
-            building_cursor.SetActive(false);
 
-            // here we discard the position of the mouse in favour of the cursor position.
-            if(MouseGridposIsFree(out (int, int) _))
+            if(MouseGridposIsFree(out (int, int) grid_pos))
             {
-                
+
+                building_cursor.SetActive(false);
+
                 int cost = building_to_spawn.GetComponent<Building>().GetCost(); 
 
                 if (cost <= money_amt)
@@ -72,113 +76,92 @@ public class GridScript : MonoBehaviour
 
                     money_amt -= cost;
 
-                    Vector3 pos = GridPosToWorldspace(grid_position);
+                    Vector3 pos = GridPosToWorldspace(grid_pos);
                     Vector3 spawnpos =  pos 
-                        + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+                        + new Vector3(resolution/2.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
         
                     GameObject newObject = Instantiate(building_to_spawn, spawnpos, rotation);
-                    newObject.GetComponent<Building>().grid_position = grid_position;
+                    newObject.GetComponent<Building>().grid_position = grid_pos;
                     
                     buildings.Add(newObject);
                 }
+
             }
+
         }
     }
 
-    Vector3 GridPosToWorldspace((int, int) grid_pos)
-    {
-        float x = resolution * ((float) grid_pos.Item1);
-        float z = resolution * ((float) grid_pos.Item2);
-        return new Vector3(x, 0.0f, z);
-    }
 
     void OnMouseOver()
     {
         
         if(MouseGridposIsFree(out (int, int) grid_pos))
         {
-            
+             
             Vector3 pos = GridPosToWorldspace(grid_pos);
-            
+ 
             building_cursor.SetActive(true);
 
             building_cursor.transform.position = pos 
-                + new Vector3(0.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+                + new Vector3(resolution/2.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
     
-            
         }
-        else
-        {
-            building_cursor.SetActive(false);
-        }
+        
+        
     }
 
-    bool CheckPosIsFree((int, int) pos)
+    (int, int) GetMouseGridPos()
     {
-        foreach (GameObject b in buildings)
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+
+        // layer 3 is the Terrain layer
+        int layer_mask = 1 << 3;
+
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, layer_mask))
         {
-            if (b.GetComponent<Building>().grid_position == pos) { return false; }
+            return ReturnGridCoordinate(hit.point);
         }
 
-        return true;
-
-    }
-
-    List<GameObject> ReturnNeighbours((int, int) grid_pos)
-    {
-
-        List<GameObject> l = new List<GameObject>();
-
-        foreach (GameObject b in buildings)
-        {
-            (int, int) b_pos = b.GetComponent<Building>().grid_position; 
-
-            if (-1 <= b_pos.Item1 - grid_pos.Item1 && b_pos.Item1 - grid_pos.Item1 <= 1
-             && -1 <= b_pos.Item1 - grid_pos.Item1 && b_pos.Item1 - grid_pos.Item1 <= 1)
-            {
-                l.Add(b);
-            }
-        }
-
-        return l;
+        else return (0, 0);
 
     }
 
     bool MouseGridposIsFree(out (int, int) pos, bool delete=false)
     {
-        
-        Vector3 mouse = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-        RaycastHit hit;
 
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+        pos = GetMouseGridPos();
+
+        GameObject ob_delete = null;
+
+        foreach (GameObject ob in buildings)
         {
-            if (hit.collider.gameObject.tag == "Terrain")
+            if (ob.GetComponent<Building>().grid_position == pos)
             {
-                pos = ReturnGridCoordinate(hit.point);
-                return true;
-            }
-            else
-            {
-                if (hit.collider.gameObject.GetComponent<Building>() == null)
+                if (delete)
                 {
-                    pos = (0,0);
-                    
+                    ob_delete = ob;
                 }
                 else
                 {
-                    if (delete) { Object.Destroy(hit.collider.gameObject); pos = (0,0); return true; }
-                    else        {pos = hit.collider.gameObject.GetComponent<Building>().grid_position; }
+                    return false;
                 }
-                return false;
-            }
 
+            }
+            
         }
-        else
+
+        if (delete && ob_delete != null)
         {
-            pos = (0, 0);
-            return false;
+            // remove from buildings && delete
+
+            buildings.Remove(ob_delete);
+            Object.Destroy(ob_delete);
+            
         }
+
+        return true;
         
     }
 
@@ -191,6 +174,14 @@ public class GridScript : MonoBehaviour
         return (x, z);
     
     }
+
+    Vector3 GridPosToWorldspace((int, int) grid_pos)
+    {
+        float x = resolution * ((float) grid_pos.Item1);
+        float z = resolution * ((float) grid_pos.Item2);
+        return new Vector3(x, 0.0f, z);
+    }
+
 
     public void SetBuildingConveyor()
     {
