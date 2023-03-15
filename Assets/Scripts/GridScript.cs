@@ -17,6 +17,8 @@ public class GridScript : MonoBehaviour
     public TMP_Text money_text;
 
     int money_amt;
+    int researchLevel;
+    int spirits;
     
     List<GameObject> buildings;
     GameObject building_to_spawn;
@@ -34,7 +36,7 @@ public class GridScript : MonoBehaviour
         buildings = new List<GameObject>();
         SetBuilding(initial_building);
         money_amt = money_initial;
-
+        
     }
 
     // Update is called once per frame
@@ -42,7 +44,9 @@ public class GridScript : MonoBehaviour
     {
 
         // TODO this doesnt belong here
-        money_text.text = System.Convert.ToString(money_amt);
+        money_text.text = $"Money: {money_amt} $\n\n" +
+            $"Research: {researchLevel}\n\n" +
+            $"Spirits: {spirits}";
 
         if (Input.GetKeyDown(KeyCode.E)) { 
             rotation *= Quaternion.Euler(0.0f, 90.0f, 0.0f);
