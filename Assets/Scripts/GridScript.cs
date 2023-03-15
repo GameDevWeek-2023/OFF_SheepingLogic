@@ -303,4 +303,9 @@ public class GridScript : MonoBehaviour
             AktualisiereAufgabenText();
         }
     }
+
+    public void IncrementMoney()
+    {
+        money_amt++;
+    }
 }
