@@ -85,7 +85,7 @@ public class GridScript : MonoBehaviour
 
                 building_cursor.SetActive(false);
 
-                int cost = building_to_spawn.GetComponent<Building>().GetCost(); 
+                int cost = building_to_spawn.GetComponent<Building>().building_cost;
 
                 if (cost <= money_amt)
                 {
@@ -94,7 +94,7 @@ public class GridScript : MonoBehaviour
 
                     Vector3 pos = GridPosToWorldspace(grid_pos);
                     Vector3 spawnpos =  pos 
-                        + new Vector3(resolution/2.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+                        + new Vector3(resolution/2.0f, building_to_spawn.GetComponent<Building>().building_height, resolution/2.0f);
         
                     GameObject newObject = Instantiate(building_to_spawn, spawnpos, rotation);
                     newObject.GetComponent<Building>().grid_position = grid_pos;
@@ -123,7 +123,7 @@ public class GridScript : MonoBehaviour
             building_cursor.SetActive(true);
 
             building_cursor.transform.position = pos 
-                + new Vector3(resolution/2.0f, building_to_spawn.GetComponent<Building>().GetSpawnHeight(), resolution/2.0f);
+                + new Vector3(resolution/2.0f, building_to_spawn.gameObject.GetComponent<Building>().building_height, resolution/2.0f);
     
         }
         
@@ -176,7 +176,7 @@ public class GridScript : MonoBehaviour
         {
             // remove from buildings && delete
 
-            money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().GetCost() * sell_fraction);
+            money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().building_cost * sell_fraction);
             buildings.Remove(ob_delete);
             Object.Destroy(ob_delete);
             

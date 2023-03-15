@@ -7,7 +7,7 @@ public abstract class Building : MonoBehaviour
 
     public (int, int) grid_position;
 
-    public abstract float GetSpawnHeight();
+    public float building_height;
 
-    public abstract int GetCost();
+    public int building_cost;
 }
