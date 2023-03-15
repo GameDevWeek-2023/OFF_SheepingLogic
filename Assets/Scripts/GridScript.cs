@@ -19,6 +19,8 @@ public class GridScript : MonoBehaviour
     int money_amt;
     
     public float sell_fraction;
+    public AudioClip building_removed_clip;
+    public AudioClip building_complete_clip;
 
     int researchLevel;
     int spirits;
@@ -76,7 +78,6 @@ public class GridScript : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject()) //might not be ideal, but works
             {
-                Debug.Log("UI clicked");
                 isOverGUI = true;
             }
             else if(MouseGridposIsFree(out (int, int) grid_pos))
@@ -98,6 +99,9 @@ public class GridScript : MonoBehaviour
         
                     GameObject newObject = Instantiate(building_to_spawn, spawnpos, rotation);
                     newObject.GetComponent<Building>().grid_position = grid_pos;
+
+                    newObject.GetComponent<Building>().PlayBuildSound();
+                    // newObject.GetComponent<AudioSource>().PlayOneShot();
                     
                     buildings.Add(newObject);
                 }
@@ -177,6 +181,7 @@ public class GridScript : MonoBehaviour
             // remove from buildings && delete
 
             money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().building_cost * sell_fraction);
+
             buildings.Remove(ob_delete);
             Object.Destroy(ob_delete);
             
