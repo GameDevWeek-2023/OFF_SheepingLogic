@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e7a362301a37c5c49b85652da598eecb,
         type: 3}
       propertyPath: m_Name
-      value: Labor
+      value: Labor Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a362301a37c5c49b85652da598eecb, type: 3}
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building_height: 0
-  building_cost: 0
+  building_cost: 10

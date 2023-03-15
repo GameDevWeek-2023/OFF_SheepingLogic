@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f1e09197023754eaba4f740af6ab9dbd,
         type: 3}
       propertyPath: m_Name
-      value: "Hei\xDFluftballon"
+      value: "Hei\xDFluftballon Variant"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e09197023754eaba4f740af6ab9dbd, type: 3}
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building_height: 0
-  building_cost: 0
+  building_cost: 20
