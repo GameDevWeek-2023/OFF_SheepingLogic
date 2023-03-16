@@ -9,11 +9,14 @@ public class Splitter : Spawner
 
     void OnCollisionEnter(Collision collision)
     {
+
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
         GameObject gob = collision.gameObject;
         gob.SetActive(false);
         StartCoroutine(SpawnNext(gob));
     }
-
     IEnumerator SpawnNext(GameObject gob)
     {
 

@@ -13,6 +13,11 @@ public class ScissorMachine : Spawner
     void OnCollisionEnter(Collision collision)
     {
 
+       
+
+    }
+    void OnTriggerEnter(Collider collision)
+    {
         GameObject gob = collision.gameObject;
         gob.SetActive(false);
 
@@ -20,8 +25,8 @@ public class ScissorMachine : Spawner
         audio_src.PlayOneShot(building_SFX);
 
         StartCoroutine(SpawnNext(gob));
-
     }
+
 
     IEnumerator SpawnNext(GameObject gob)
     {
@@ -29,7 +34,7 @@ public class ScissorMachine : Spawner
         yield return new WaitForSeconds(spawn_delay);
 
         gob.SetActive(true);
-        Spawn(geschorenes_schaf, gameObject.transform.forward);
+        Spawn(geschorenes_schaf, gob.transform.forward);
         Destroy(gob);
     }
 

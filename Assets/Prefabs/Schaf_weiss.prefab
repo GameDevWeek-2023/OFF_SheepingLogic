@@ -124,6 +124,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Schaf
       objectReference: {fileID: 0}
+    - target: {fileID: 6283986938476340298, guid: 8097443712c25b6a7837c417c03cacdc,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283986938476340298, guid: 8097443712c25b6a7837c417c03cacdc,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265587908119674823, guid: 8097443712c25b6a7837c417c03cacdc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8097443712c25b6a7837c417c03cacdc, type: 3}
 --- !u!4 &6108040527622629520 stripped
