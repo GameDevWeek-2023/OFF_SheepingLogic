@@ -226,8 +226,8 @@ public class GridScript : MonoBehaviour
     (int, int) ReturnGridCoordinate(Vector3 pos)
     {
     
-        int x = (int) (pos[0] / resolution);
-        int z = (int) (pos[2] / resolution);
+        int x = (int) Mathf.Floor(pos[0] / resolution);
+        int z = (int) Mathf.Floor(pos[2] / resolution);
 
         return (x, z);
     
