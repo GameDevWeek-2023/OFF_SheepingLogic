@@ -55,11 +55,17 @@ public class GridScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // buildings = new List<GameObject>();
         SetBuilding(initial_building);
         money_amt = money_initial;
         NeueAufgabe();
         AktualisiereAufgabenText();
+
+        // Gameobjects of level need to be linked in editor, here the grid position is initialized
+        foreach (GameObject b in buildings)
+        {
+            (int, int) gridpos = ReturnGridCoordinate(b.transform.position);
+            b.GetComponent<Building>().grid_position = gridpos;
+        }
 
     }
 
