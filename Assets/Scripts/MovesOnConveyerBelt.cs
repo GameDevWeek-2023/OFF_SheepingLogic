@@ -52,14 +52,14 @@ public class MovesOnConveyerBelt : MonoBehaviour
                     rb.useGravity = true;
                     col.isTrigger = false;
                     rb.AddForce(2*transform.forward + 1*transform.up, ForceMode.Impulse);
-                    StartCoroutine(ZerstörHeruntergefallenesObjekt());
+                    StartCoroutine(ZerstoerHeruntergefallenesObjekt());
                 }
 
             }
         }
 
     }
-    IEnumerator ZerstörHeruntergefallenesObjekt()
+    IEnumerator ZerstoerHeruntergefallenesObjekt()
     {
 
         yield return new WaitForSeconds(2);

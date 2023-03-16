@@ -14,7 +14,7 @@ public abstract class Spawner : Building
 
         Instantiate(spawn_object,
                 gameObject.transform.position + dir_normed * 2 + new Vector3(0.0f, spawn_height, 0.0f),
-                Quaternion.identity);
+                Quaternion.LookRotation(dir_normed,Vector3.up));
                 
     }
 
