@@ -43,6 +43,7 @@ public class GridScript : MonoBehaviour
     #endregion
 
     public List<GameObject> buildings;
+    public Material building_cursor_mat;
     GameObject building_to_spawn;
     GameObject building_cursor;
     Quaternion build_rotation = Quaternion.identity;
@@ -244,11 +245,27 @@ public class GridScript : MonoBehaviour
         Object.Destroy(building_cursor);
         building_to_spawn = building;
         building_cursor = Instantiate(building, Vector3.zero, build_rotation);
+        SetMaterial();
         building_cursor.GetComponent<BoxCollider>().enabled = false;
         building_cursor.GetComponent<Building>().enabled = false;
     }
 
     public void IncrementResearch() { researchLevel++; }
+
+    public void SetMaterial()
+    {
+        Renderer[] children;
+        children = building_cursor.GetComponentsInChildren<MeshRenderer>();
+        foreach (Renderer rend in children)
+         {
+            var mats = new Material[rend.materials.Length];
+            for (var j = 0; j < rend.materials.Length; j++)
+            {
+                mats[j] = building_cursor_mat;
+            }
+            rend.materials = mats;
+        }
+    }
 
     public void NeueAufgabe()
     {
