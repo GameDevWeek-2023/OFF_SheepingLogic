@@ -25,6 +25,9 @@ public class GridScript : MonoBehaviour
     public float sell_fraction;
     public AudioClip building_removed_clip;
     public AudioClip building_complete_clip;
+    public AudioClip whoosh1;
+    public AudioClip whoosh2;
+    public AudioSource audio_src;
 
     int researchLevel;
     int spirits;
@@ -100,6 +103,7 @@ public class GridScript : MonoBehaviour
     {
         togglePauseMenu(false);
         fadeInOut(is_fade_in: true);
+        audio_src= GetComponent<AudioSource>();
         fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
         SetBuilding(initial_building);
         money_amt = money_initial;
@@ -138,9 +142,12 @@ public class GridScript : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E)) { 
+            audio_src.PlayOneShot(whoosh1);
             build_rotation *= Quaternion.Euler(0.0f, 90.0f, 0.0f);
+
         }
         if (Input.GetKeyDown(KeyCode.Q)) { 
+            audio_src.PlayOneShot(whoosh2);
             build_rotation *= Quaternion.Euler(0.0f, -90.0f, 0.0f);
         }
         
