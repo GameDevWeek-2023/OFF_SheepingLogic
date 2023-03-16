@@ -131,6 +131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6283986938476340298, guid: 8097443712c25b6a7837c417c03cacdc,
         type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283986938476340298, guid: 8097443712c25b6a7837c417c03cacdc,
+        type: 3}
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
@@ -139,7 +144,9 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3221840219773571314, guid: 8097443712c25b6a7837c417c03cacdc, type: 3}
+    - {fileID: 8265587908119674823, guid: 8097443712c25b6a7837c417c03cacdc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8097443712c25b6a7837c417c03cacdc, type: 3}
 --- !u!4 &6108040527622629520 stripped
 Transform:
@@ -250,3 +257,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6429193321708567783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885949761310077482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50446fa2a00f84e960e48f4ce6d55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &7864015405194610890
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885949761310077482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.48
+  m_Height: 1.43
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.38699836, z: 0}

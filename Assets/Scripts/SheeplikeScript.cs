@@ -36,35 +36,6 @@ public class SheeplikeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        float velocity = 1.0f;
-        
-        //gameObject.transform.position += -transform.up * velocity * Time.deltaTime;
-        RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(gameObject.transform.position, -transform.up, out hit, Mathf.Infinity))
-        {
-            GameObject go = hit.collider.gameObject;
-
-            if (go.tag == "Building")
-            {
-                transform.forward = go.transform.forward;
-
-                Vector3 delta = gameObject.transform.position - go.transform.position;
-                float innerp = Vector3.Dot(delta, go.transform.right);
-
-                float tolerance = 0.001f;
-                if (innerp < tolerance && innerp > -tolerance)
-                {
-                    gameObject.transform.position += go.transform.forward * velocity * Time.deltaTime;
-                }
-                else
-                {
-                    gameObject.transform.position += - Mathf.Sign(innerp) * go.transform.right * velocity * Time.deltaTime;
-                }
-
-            }
-        }
 
         float delta_t = 5.0f;
 
