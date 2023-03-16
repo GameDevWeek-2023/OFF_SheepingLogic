@@ -1791,6 +1791,7 @@ MonoBehaviour:
   destrucible: 1
   spawn_height: 0.6
   spawn_delay: 5
+  animator: {fileID: 0}
   spawn_object: {fileID: 2070449825239501336, guid: f8b6cd093aee992d298f3320f7efd747,
     type: 3}
 --- !u!82 &483515455
@@ -3501,6 +3502,7 @@ MonoBehaviour:
   geschorenes_schaf: {fileID: 2926049314989150554, guid: a40107cc2144ac636905bc7915e2426a,
     type: 3}
   wolle: {fileID: 9106520607630776780, guid: 59520190dd3922c47b460c57a4cc5027, type: 3}
+  animator: {fileID: 0}
   building_SFX: {fileID: 8300000, guid: b22bd26ef414ec64d96a785b76a3c027, type: 3}
 --- !u!82 &971475759
 AudioSource:

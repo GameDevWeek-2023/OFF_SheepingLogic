@@ -3,7 +3,17 @@ guid: 853c64e5093e433f484c56bfaea79df6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - conveyor_build: {instanceID: 0}
+  - spawner_build: {fileID: 4678845613914675386, guid: ddc59df5a4106626ba4f19dd42fa6c48,
+      type: 3}
+  - despawner_build: {instanceID: 0}
+  - aufgabenText: {instanceID: 0}
+  - money_text: {instanceID: 0}
+  - building_removed_clip: {instanceID: 0}
+  - building_complete_clip: {instanceID: 0}
+  - building_cursor_mat: {instanceID: 0}
+  - initial_building: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
