@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7248965463052874044}
   m_Layer: 0
-  m_Name: Schermaschine
+  m_Name: Schermaschine 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
