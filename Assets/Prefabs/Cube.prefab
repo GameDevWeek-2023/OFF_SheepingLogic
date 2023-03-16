@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3609747177556855055}
   - component: {fileID: 3609747177556855052}
   - component: {fileID: 3609747177556855053}
-  - component: {fileID: 3609747177556855050}
+  - component: {fileID: -5245640753009376860}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3609747177556855050
+--- !u!114 &-5245640753009376860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3609747177556855051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cabc7218c79a6ec2abef7bbadee6248, type: 3}
+  m_Script: {fileID: 11500000, guid: 326e38141e894db4895b3188dfcaf1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  building_height: 0
+  building_cost: 0
+  build_completed_clip: {fileID: 0}
+  hasAudioLoop: 0
+  spawn_height: 0
+  spawn_delay: 1
+  geschorenes_schaf: {fileID: 185512265018555119, guid: 7712471867be022b1aa39b22b072cee9,
+    type: 3}
+  building_SFX: {fileID: 0}
