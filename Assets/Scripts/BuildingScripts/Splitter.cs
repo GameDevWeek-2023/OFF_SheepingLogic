@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Splitter : Spawner
 {
-    [SerializeField] Animator animator;
-    int direction = 1;
-    private void Start()
-    {
-        animator.Play("PlaceObject1");
-    }
+
+    int direction = 1; 
+
     void OnCollisionEnter(Collision collision)
     {
 
@@ -24,7 +21,7 @@ public class Splitter : Spawner
     {
 
         yield return new WaitForSeconds(spawn_delay);
-        animator.Play("SpawnObjects");
+
         gob.SetActive(true);
         Spawn(gob, direction * gameObject.transform.right);
         direction *= -1;

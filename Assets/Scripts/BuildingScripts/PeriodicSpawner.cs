@@ -5,7 +5,7 @@ using System;
 
 public class PeriodicSpawner : Spawner
 {
-    [SerializeField] Animator animator;
+
     float last_spawn_time;
     
     public GameObject spawn_object;
@@ -14,7 +14,6 @@ public class PeriodicSpawner : Spawner
     void Start()
     {
         last_spawn_time = Time.time;
-        animator.Play("PlacePortal");
     }
 
     // Update is called once per frame
@@ -22,11 +21,13 @@ public class PeriodicSpawner : Spawner
     {
 
         float t = Time.time;
+
         if (t - last_spawn_time > spawn_delay)
         {
-            animator.Play("SpawnSheep");
             last_spawn_time = t;
+
             Spawn(spawn_object, gameObject.transform.forward);
+
         }
     }
 

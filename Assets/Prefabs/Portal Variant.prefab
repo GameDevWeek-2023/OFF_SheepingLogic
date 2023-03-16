@@ -294,26 +294,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &4153862731332548318
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4678845613914675386}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 87adcbd0b554586499a1f557ab5e0eb6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6044645375047442456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,10 +311,8 @@ MonoBehaviour:
   build_completed_clip: {fileID: 8300000, guid: a57797153d2fad15aba0376564ec8fa6,
     type: 3}
   hasAudioLoop: 1
-  destrucible: 1
   spawn_height: 0.6
   spawn_delay: 5
-  animator: {fileID: 4153862731332548318}
   spawn_object: {fileID: 2070449825239501336, guid: f8b6cd093aee992d298f3320f7efd747,
     type: 3}
 --- !u!4 &5450844181611610624 stripped
