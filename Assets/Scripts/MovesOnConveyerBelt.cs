@@ -11,6 +11,7 @@ public class MovesOnConveyerBelt : MonoBehaviour
     {
         rb= GetComponent<Rigidbody>();
         col= GetComponent<Collider>();
+        col.isTrigger = true;
     }
     void Update()
     {
