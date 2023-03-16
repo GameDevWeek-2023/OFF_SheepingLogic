@@ -149,6 +149,7 @@ MonoBehaviour:
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
+  destrucible: 1
 --- !u!82 &1770270093550408700
 AudioSource:
   m_ObjectHideFlags: 0

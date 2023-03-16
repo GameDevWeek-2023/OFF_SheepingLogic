@@ -6,7 +6,7 @@ public abstract class Spawner : Building
 {
 
 
-    public float spawn_height; 
+    public float spawn_height =0.55f; 
     public float spawn_delay;
     
     public void Spawn(GameObject spawn_object, Vector3 dir_normed)
