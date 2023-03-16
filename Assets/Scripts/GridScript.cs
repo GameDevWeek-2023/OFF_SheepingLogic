@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GridScript : MonoBehaviour
 {
@@ -51,11 +53,53 @@ public class GridScript : MonoBehaviour
     public GameObject initial_building;
 
     public bool isOverGUI = false;
+    public GameObject fadePanel;
+
+    //Pause Menu
+    public GameObject PauseMenu;
+
+    public void togglePauseMenu(bool isPaused)
+    {
+        PauseMenu.SetActive(isPaused);
+        if (isPaused)
+        { Time.timeScale = 0; }
+        else
+        { Time.timeScale = 1; }
+    }
+
+    public void changeScene(int sceneIndex)
+    {
+        StartCoroutine(changeSceneCoroutine(sceneIndex));
+    }
+
+    public IEnumerator changeSceneCoroutine(int sceneIndex)
+    {
+        fadeInOut(is_fade_in: false);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync(sceneIndex);
+    }
+
+    public void fadeInOut(bool is_fade_in)
+    {
+        if (is_fade_in)
+        { 
+            fadePanel.GetComponent<UnityEngine.UI.Image>().CrossFadeAlpha(0, 1f, false);
+            //fadePanel.GetComponentInParent<Transform>().gameObject.SetActive(false);
+        }
+        else
+        {
+            //fadePanel.GetComponentInParent<Transform>().gameObject.SetActive(true);
+            fadePanel.GetComponent<UnityEngine.UI.Image>().CrossFadeAlpha(1, .75f, false);
+        }
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
+        togglePauseMenu(false);
+        fadeInOut(is_fade_in: true);
+        fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
         SetBuilding(initial_building);
         money_amt = money_initial;
         NeueAufgabe();
@@ -79,6 +123,18 @@ public class GridScript : MonoBehaviour
         money_text.text = $"Money: {money_amt} $\n\n" +
             $"Research: {researchLevel}\n\n" +
             $"Spirits: {spirits}";
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 1)
+            {
+                togglePauseMenu(true);
+            }
+            else if (Time.timeScale == 0)
+            {
+                togglePauseMenu(false);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.E)) { 
             build_rotation *= Quaternion.Euler(0.0f, 90.0f, 0.0f);
