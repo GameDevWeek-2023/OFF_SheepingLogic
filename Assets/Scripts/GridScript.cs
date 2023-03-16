@@ -65,6 +65,7 @@ public class GridScript : MonoBehaviour
         {
             (int, int) gridpos = ReturnGridCoordinate(b.transform.position);
             b.GetComponent<Building>().grid_position = gridpos;
+            b.GetComponent<Building>().destrucible = false;
         }
 
     }
@@ -201,7 +202,12 @@ public class GridScript : MonoBehaviour
             
         }
 
-        if (delete && ob_delete != null)
+        if      (delete && ob_delete != null && !ob_delete.GetComponent<Building>().destrucible)
+        {
+            return false;
+        }
+        
+        else if (delete && ob_delete != null)
         {
             // remove from buildings && delete
 
