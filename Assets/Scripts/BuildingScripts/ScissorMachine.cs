@@ -6,6 +6,7 @@ public class ScissorMachine : Spawner
 {
 
     public GameObject geschorenes_schaf;
+    [SerializeField] GameObject wolle;
 
     public AudioClip building_SFX;
     private AudioSource audio_src;
@@ -35,6 +36,7 @@ public class ScissorMachine : Spawner
 
         gob.SetActive(true);
         Spawn(geschorenes_schaf, gob.transform.forward);
+        Spawn(wolle, -transform.right);
         Destroy(gob);
     }
 

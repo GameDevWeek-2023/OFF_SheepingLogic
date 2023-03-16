@@ -15,9 +15,13 @@ public class Lab : Building
     void OnCollisionEnter(Collision collision)
     {
 
+
+
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
         Destroy(collision.gameObject);
         gridScriptAttach.GetComponent<GridScript>().IncrementResearch();
-
     }
 
 }

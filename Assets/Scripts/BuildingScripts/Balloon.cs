@@ -15,9 +15,13 @@ public class Balloon : Building
     void OnCollisionEnter(Collision collision)
     {
 
+
+
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
         Destroy(collision.gameObject);
         gridScriptAttach.GetComponent<GridScript>().IncrementMoney();
-
     }
 
 }
