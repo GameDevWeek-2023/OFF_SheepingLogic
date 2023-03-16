@@ -1091,8 +1091,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 840268556}
   m_HandleRect: {fileID: 840268555}
   m_Direction: 2
-  m_Value: 0.49999937
-  m_Size: 0.94026655
+  m_Value: 0.5
+  m_Size: 0.9402666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1906,11 +1906,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6094569817650191584, guid: 921023bd4a2927b6b8cbc1d4d09c3dde,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 16c157e4e709b8b4195c14f820e2d700, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3606,7 +3606,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1295715738}
   m_HandleRect: {fileID: 1295715737}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
