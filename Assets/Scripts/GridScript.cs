@@ -13,6 +13,7 @@ public class GridScript : MonoBehaviour
     public GameObject spawner_build;
     public GameObject despawner_build;
     [SerializeField] TMP_Text aufgabenText;
+    [SerializeField] Image fade_in_panel;
 
     public int money_initial;
     public TMP_Text money_text;
@@ -21,8 +22,12 @@ public class GridScript : MonoBehaviour
     int aufgabenNummer = 1;
     
     public float sell_fraction;
+
     public AudioClip building_removed_clip;
     public AudioClip building_complete_clip;
+    public AudioClip whoosh01;
+    public AudioClip whoosh02;
+    private AudioSource audio_src;
 
     int researchLevel;
     int spirits;
@@ -55,12 +60,20 @@ public class GridScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine("FadeIn");
+        audio_src= GetComponent<AudioSource>();
         buildings = new List<GameObject>();
         SetBuilding(initial_building);
         money_amt = money_initial;
         NeueAufgabe();
         AktualisiereAufgabenText();
+    }
 
+    public IEnumerator FadeIn()
+    {
+        fade_in_panel.GetComponent<Image>().CrossFadeAlpha(0, 1.0f, false);
+        yield return new WaitForSeconds(1.5f);
+        Object.Destroy(fade_in_panel);
     }
 
     // Update is called once per frame
@@ -73,9 +86,11 @@ public class GridScript : MonoBehaviour
             $"Spirits: {spirits}";
 
         if (Input.GetKeyDown(KeyCode.E)) { 
+            audio_src.PlayOneShot(whoosh01);
             rotation *= Quaternion.Euler(0.0f, 90.0f, 0.0f);
         }
-        if (Input.GetKeyDown(KeyCode.Q)) { 
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            audio_src.PlayOneShot(whoosh02);
             rotation *= Quaternion.Euler(0.0f, -90.0f, 0.0f);
         }
         

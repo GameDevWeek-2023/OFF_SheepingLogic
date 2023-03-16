@@ -221,3 +221,4 @@ MonoBehaviour:
   spawn_delay: 3
   geschorenes_schaf: {fileID: 2926049314989150554, guid: a40107cc2144ac636905bc7915e2426a,
     type: 3}
+  building_SFX: {fileID: 8300000, guid: b22bd26ef414ec64d96a785b76a3c027, type: 3}

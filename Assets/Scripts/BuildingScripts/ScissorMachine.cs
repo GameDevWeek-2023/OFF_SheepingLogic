@@ -7,11 +7,17 @@ public class ScissorMachine : Spawner
 
     public GameObject geschorenes_schaf;
 
+    public AudioClip building_SFX;
+    private AudioSource audio_src;
+
     void OnCollisionEnter(Collision collision)
     {
 
         GameObject gob = collision.gameObject;
         gob.SetActive(false);
+
+        audio_src = GetComponent<AudioSource>();
+        audio_src.PlayOneShot(building_SFX);
 
         StartCoroutine(SpawnNext(gob));
 
