@@ -15,6 +15,8 @@ public abstract class Building : MonoBehaviour
 
     public bool hasAudioLoop=false;
 
+    public bool destrucible=true;
+
     public virtual void PlayBuildSound()
     {
         GetComponent<AudioSource>().PlayOneShot(build_completed_clip);
