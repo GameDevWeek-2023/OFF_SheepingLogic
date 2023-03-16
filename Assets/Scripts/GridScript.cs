@@ -46,6 +46,7 @@ public class GridScript : MonoBehaviour
 
     public List<GameObject> buildings;
     public Material building_cursor_mat;
+    public GameObject arrow;
     GameObject building_to_spawn;
     GameObject building_cursor;
     Quaternion build_rotation = Quaternion.identity;
@@ -145,6 +146,7 @@ public class GridScript : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E)) {
             building_cursor.transform.rotation = build_rotation;
+            arrow.transform.rotation = build_rotation;
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -155,6 +157,7 @@ public class GridScript : MonoBehaviour
         if (!MouseGridposIsFree(out (int, int) _))
         {
             building_cursor.SetActive(false);
+            arrow.SetActive(false);
         }
 
         if(Input.GetMouseButtonDown(0))
@@ -168,6 +171,7 @@ public class GridScript : MonoBehaviour
                 isOverGUI = false;
 
                 building_cursor.SetActive(false);
+                arrow.SetActive(false);
 
                 int cost = building_to_spawn.GetComponent<Building>().building_cost;
 
@@ -208,6 +212,10 @@ public class GridScript : MonoBehaviour
             Vector3 pos = GridPosToWorldspace(grid_pos);
  
             building_cursor.SetActive(true);
+            arrow.SetActive(true);
+
+            arrow.transform.position = pos
+                + new Vector3(resolution / 2.0f, building_to_spawn.gameObject.GetComponent<Building>().building_height + 2.5f, resolution / 2.0f);
 
             building_cursor.transform.position = pos 
                 + new Vector3(resolution/2.0f, building_to_spawn.gameObject.GetComponent<Building>().building_height, resolution/2.0f);
@@ -299,8 +307,10 @@ public class GridScript : MonoBehaviour
     public void SetBuilding(GameObject building)
     {
         Object.Destroy(building_cursor);
+        Object.Destroy(arrow);
         building_to_spawn = building;
         building_cursor = Instantiate(building, Vector3.zero, build_rotation);
+        arrow = Instantiate(arrow, Vector3.zero, build_rotation);
         SetMaterial();
         building_cursor.GetComponent<BoxCollider>().enabled = false;
         building_cursor.GetComponent<Building>().enabled = false;
