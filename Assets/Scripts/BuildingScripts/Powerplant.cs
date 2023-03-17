@@ -11,6 +11,13 @@ public class Powerplant : Spawner
 
     public AudioClip building_SFX;
     private AudioSource audio_src;
+    private GameObject gridScriptAttach;
+
+    private void Start()
+    {
+        gridScriptAttach = GameObject.Find("Terrain");
+        gridScriptAttach.GetComponent<GridScript>().ChangePower(powerLevel);
+    }
 
     void OnTriggerEnter(Collider collision)
     {
