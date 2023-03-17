@@ -1732,7 +1732,9 @@ MonoBehaviour:
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
-  money: {fileID: 11400000, guid: 221d853d0e8abaa69a01ea53cc1c6b88, type: 2}
+  money: {fileID: 0}
+  QuestCompleted: 0
+  FlyTime: 3
 --- !u!65 &400522256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2893,7 +2895,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 5042185285065338961, guid: 343ea3fdaf4367a7ca3df214f8d1839e,
+      objectReference: {fileID: 7173017416614537955, guid: ae3785dd5514a8f4aab0b4bfd32f5c27,
         type: 3}
     - target: {fileID: 2473202233371019123, guid: 776556d283b7d274ca442007a47ed43f,
         type: 3}
@@ -4181,7 +4183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8377e68f556dbc3bb9463ce884cabf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraDragSpeed: 150
 --- !u!1 &1006888224
 GameObject:
   m_ObjectHideFlags: 0
@@ -6987,6 +6988,7 @@ MonoBehaviour:
   audio_src: {fileID: 1802377678}
   money: {fileID: 11400000, guid: 221d853d0e8abaa69a01ea53cc1c6b88, type: 2}
   research: {fileID: 11400000, guid: c77b2003e83785e988d25419cb0a893a, type: 2}
+  power_text: {fileID: 1532352302}
   buildings:
   - {fileID: 400522254}
   building_cursor_mat: {fileID: 2100000, guid: c9a206ac415f16445aac4bdb5f704e18, type: 2}

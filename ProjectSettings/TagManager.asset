@@ -11,6 +11,7 @@ TagManager:
   - schwarzesSchaf
   - geschorenesSchaf
   - weisseWolle
+  - Power
   layers:
   - Default
   - TransparentFX

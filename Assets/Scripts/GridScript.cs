@@ -102,7 +102,7 @@ public class GridScript : MonoBehaviour
 
     public void UpdatePower()
     {
-        int availablePower = 0;
+        int availablePower = 10;
         int requiredPower = 0;
         List<GameObject> powerPlants = new List<GameObject>();
 
@@ -143,7 +143,7 @@ public class GridScript : MonoBehaviour
         arrow = arrowPrefab;
         SetBuilding(initial_building);
         
-        powerAvailable = 0;
+        powerAvailable = 10;
 
         NeueAufgabe();
         AktualisiereAufgabenText();
