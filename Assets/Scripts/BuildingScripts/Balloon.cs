@@ -4,45 +4,11 @@ using UnityEngine;
 
 public class Balloon : Building
 {
-    
-    public IntValue money;
-    public Counter ct;
+
     public bool QuestCompleted =false;
 
     public float FlyTime = 3.0f;
     private float velocity = 5.0f;
-
-    void Start()
-    {
-        ct = new Counter();
-    } 
-
-    private void OnTriggerEnter(Collider collision)
-    {
-
-        if (collision.gameObject.tag == "weissesSchaf")         ct.WhiteSheep ++;
-        if (collision.gameObject.tag == "schwarzesSchaf")       ct.BlackSheep ++;
-        if (collision.gameObject.tag == "geschorenesSchaf")     ct.SnippedSheep ++;
-        if (collision.gameObject.tag == "weisseWolle")          ct.WhiteWool ++;
-        if (collision.gameObject.tag == "schwarzeWolle")        ct.BlackWool ++;
-        
-
-        Destroy(collision.gameObject);
-        money.Increment();
-    }
-
-    void Update ()
-    {
-        if (QuestCompleted)
-        {
-            transform.position += transform.up * Time.deltaTime * velocity;
-        }
-    }
-
-}
-
-public class Counter
-{
 
     public int WhiteSheep {get; set;}
     public int BlackSheep {get; set;}
@@ -56,4 +22,27 @@ public class Counter
 
     public int Garn {get; set;}
 
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        if (collision.gameObject.tag == "weissesSchaf")         WhiteSheep ++;
+        if (collision.gameObject.tag == "schwarzesSchaf")       BlackSheep ++;
+        if (collision.gameObject.tag == "geschorenesSchaf")     SnippedSheep ++;
+        if (collision.gameObject.tag == "weisseWolle")          WhiteWool ++;
+        if (collision.gameObject.tag == "schwarzeWolle")        BlackWool ++;
+        
+
+        Destroy(collision.gameObject);
+        //money.Increment();
+    }
+
+    void Update ()
+    {
+        if (QuestCompleted)
+        {
+            transform.position += transform.up * Time.deltaTime * velocity;
+        }
+    }
+
 }
+

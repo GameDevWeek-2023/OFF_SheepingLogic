@@ -3,7 +3,26 @@ guid: 853c64e5093e433f484c56bfaea79df6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - conveyor_build: {instanceID: 0}
+  - spawner_build: {instanceID: 0}
+  - despawner_build: {instanceID: 0}
+  - aufgabenText: {instanceID: 0}
+  - building_removed_clip: {instanceID: 0}
+  - building_complete_clip: {instanceID: 0}
+  - whoosh1: {instanceID: 0}
+  - whoosh2: {instanceID: 0}
+  - audio_src: {instanceID: 0}
+  - money: {instanceID: 0}
+  - research: {instanceID: 0}
+  - power_text: {instanceID: 0}
+  - building_cursor_mat: {instanceID: 0}
+  - arrowPrefab: {fileID: 8319791678651836592, guid: 0efc2922e47968149b77deeb4e08c31b,
+      type: 3}
+  - initial_building: {fileID: 1136049025606419880, guid: 3ef8b476eaeb4d22c8c460709d91cc85,
+      type: 3}
+  - fadePanel: {instanceID: 0}
+  - PauseMenu: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

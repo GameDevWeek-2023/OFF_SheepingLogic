@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhiteSheep : Quest
+public class ShearedSheep : Quest
 {
 
     protected override int GetValue()
     {
-        return balloon.GetComponent<Balloon>().WhiteSheep;
+        return balloon.GetComponent<Balloon>().SnippedSheep;
     }
 }

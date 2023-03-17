@@ -12,14 +12,16 @@ public abstract class Quest : MonoBehaviour
     public GameObject toggle;
     public string description_text;
     public int ct_total;
+    public int reward;
+
+    public IntValue money;
 
     public GameObject gridScriptAttach;
 
-    protected Counter ct;
-    
+    private bool QuestCompleted=false;
+
     void Start()
     {
-        ct = balloon.GetComponent<Balloon>().ct;
         description.text = description_text;
         toggle.GetComponent<Toggle>().isOn = false;
     }
@@ -33,8 +35,10 @@ public abstract class Quest : MonoBehaviour
     void Update()
     {
         target_ct.text = GetValue().ToString() + " / " + ct_total.ToString();
-        if (fulfilled() && balloon != null)
+        if (fulfilled() && !QuestCompleted)
         {
+            QuestCompleted = true;
+            money.value += reward;
             toggle.GetComponent<Toggle>().isOn = true;
             
             StartCoroutine(TriggerAnim());
@@ -52,8 +56,6 @@ public abstract class Quest : MonoBehaviour
         gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
 
     }
-
-
 
     abstract protected int GetValue();
     
