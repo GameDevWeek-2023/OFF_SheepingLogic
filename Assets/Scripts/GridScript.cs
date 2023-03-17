@@ -14,11 +14,7 @@ public class GridScript : MonoBehaviour
     public GameObject conveyor_build;
     public GameObject spawner_build;
     public GameObject despawner_build;
-
     [SerializeField] TMP_Text aufgabenText;
-
-    public GameObject pop_up_panel;
-    public TMP_Text pop_up_text;
 
     int aufgabenNummer = 1;
     
@@ -136,20 +132,10 @@ public class GridScript : MonoBehaviour
         powerRequired = requiredPower; 
     }
 
-    public IEnumerator ShowPopUp(int duration, string content)
-    {
-        pop_up_text.text = content;
-        pop_up_panel.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        pop_up_panel.SetActive(false);
-    }
-
 
     // Start is called before the first frame update
     void Start()
     {
-        pop_up_panel.SetActive(false);
-
         togglePauseMenu(false);
         fadeInOut(is_fade_in: true);
         fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
@@ -271,14 +257,6 @@ public class GridScript : MonoBehaviour
 
                         buildings.Add(newObject);
                     }
-                    else
-                    {
-                        StartCoroutine(ShowPopUp(3, "Not enough power"));
-                    }
-                }
-                else
-                {
-                    StartCoroutine(ShowPopUp(3, "Not enough money"));
                 }
 
             }
