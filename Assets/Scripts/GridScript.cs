@@ -31,7 +31,8 @@ public class GridScript : MonoBehaviour
 
     int money_amt;
     int researchLevel;
-    int power;
+    int powerRequired;
+    int powerAvailable = 0;
     int spirits;
 
     #region Aufgabenvariablen
@@ -293,6 +294,7 @@ public class GridScript : MonoBehaviour
             // remove from buildings && delete
 
             money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().building_cost * sell_fraction);
+            powerRequired -= ob_delete.GetComponent<Building>().powerConsumption;
 
             buildings.Remove(ob_delete);
             Object.Destroy(ob_delete);
@@ -330,6 +332,8 @@ public class GridScript : MonoBehaviour
         SetMaterial();
         building_cursor.GetComponent<BoxCollider>().enabled = false;
         building_cursor.GetComponent<Building>().enabled = false;
+
+        powerRequired += building_to_spawn.GetComponent<Building>().powerConsumption;
     }
 
     public void IncrementResearch() { researchLevel++; }
@@ -410,5 +414,10 @@ public class GridScript : MonoBehaviour
     public void IncrementMoney()
     {
         money_amt++;
+    }
+
+    public void ChangePower(int amount)
+    {
+        powerAvailable += amount;
     }
 }
