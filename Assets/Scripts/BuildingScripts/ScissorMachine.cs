@@ -16,22 +16,21 @@ public class ScissorMachine : Spawner
     {
         animator.Play("PlaceObject");
     }
-    void OnCollisionEnter(Collision collision)
-    {
 
-       
-
-    }
     void OnTriggerEnter(Collider collision)
     {
         GameObject gob = collision.gameObject;
         gob.SetActive(false);
 
-        audio_src = GetComponent<AudioSource>();
-        audio_src.PlayOneShot(building_SFX);
-        animator.Play("ReciveObject");
-
+        if (gob.tag == "weißesSchaf" || gob.tag == "schwarzesSchaf")
+        {
+            audio_src = GetComponent<AudioSource>();
+            audio_src.PlayOneShot(building_SFX);
+            animator.Play("ReciveObject");
+        }
+        
         StartCoroutine(SpawnNext(gob));
+    
     }
 
 
@@ -41,8 +40,19 @@ public class ScissorMachine : Spawner
         yield return new WaitForSeconds(spawn_delay);
         animator.Play("SpawnObject");
         gob.SetActive(true);
-        Spawn(geschorenes_schaf, gob.transform.forward);
-        Spawn(wolle, -transform.right);
+
+        if (gob.tag == "weissesSchaf" || gob.tag == "schwarzesSchaf")
+        {
+            Spawn(geschorenes_schaf, gob.transform.forward);
+
+            // TODO adjust wool color here
+            Spawn(wolle, -transform.right);
+        }
+        else
+        {
+            Spawn(gob, gob.transform.forward);
+        }
+        
         Destroy(gob);
     }
 

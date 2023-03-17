@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MovesOnConveyerBelt : MonoBehaviour
 {
-     Rigidbody rb;
+    Rigidbody rb;
     Collider col;
     bool vomBandgefallen = false;
     private void Start()
     {
         rb= GetComponent<Rigidbody>();
         col= GetComponent<Collider>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
         col.isTrigger = true;
     }
     void Update()

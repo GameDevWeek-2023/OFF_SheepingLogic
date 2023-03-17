@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5ed2923ad23fda4478a01469dc0e4bf5,
         type: 3}
       propertyPath: m_Name
-      value: "Hei\xDFluftballon"
+      value: "Hei\xDFluftballon Variant"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ed2923ad23fda4478a01469dc0e4bf5, type: 3}
@@ -102,7 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_height: 0
   building_cost: 20
+  powerConsumption: 0
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
+  money: {fileID: 11400000, guid: 221d853d0e8abaa69a01ea53cc1c6b88, type: 2}

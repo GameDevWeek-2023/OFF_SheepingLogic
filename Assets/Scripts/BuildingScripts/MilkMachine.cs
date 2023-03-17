@@ -15,12 +15,7 @@ public class MilkMachine : Spawner
     {
         animator.Play("PLaceObject");
     }
-    void OnCollisionEnter(Collision collision)
-    {
 
-       
-
-    }
     void OnTriggerEnter(Collider collision)
     {
         GameObject gob = collision.gameObject;
@@ -41,7 +36,10 @@ public class MilkMachine : Spawner
         animator.Play("SpawnObject");
         gob.SetActive(true);
         Spawn(gob, gob.transform.forward);
-        Spawn(wolle, -transform.right);
+
+        // Todo schwarze Wolle
+        if (gob.tag == "weissesSchaf" || gob.tag == "schwarzesSchaf")   Spawn(wolle, -transform.right);
+        
         Destroy(gob);
 
     }

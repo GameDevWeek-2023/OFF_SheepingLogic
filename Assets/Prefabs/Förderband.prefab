@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3530391852261721207}
   - component: {fileID: 5261094144463549161}
   - component: {fileID: 4324903510144413238}
+  - component: {fileID: 8488245503763302042}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -29,7 +30,8 @@ Transform:
   m_LocalPosition: {x: -4e-15, y: 0.000000059605, z: 0.000000059605}
   m_LocalScale: {x: 0.9307, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6811323025281149480}
   m_Father: {fileID: 328725652469669650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,6 +85,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &8488245503763302042
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615028099326413469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 684cc7988f8a5324d9be2f770ca7d45a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1136049025606419880
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +137,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3530391852261721207}
-  - {fileID: 6811323025281149480}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -146,12 +167,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_height: 0
   building_cost: 1
-  powerConsumption: 1
+  powerConsumption: 0
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
-  animator: {fileID: 0}
+  animator: {fileID: 8488245503763302042}
 --- !u!82 &1770270093550408700
 AudioSource:
   m_ObjectHideFlags: 0
@@ -274,13 +295,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8440355460689844682}
-  m_LocalRotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: -0.5}
-  m_LocalPosition: {x: -7e-15, y: 0.25, z: -0.73472}
-  m_LocalScale: {x: 0.24141538, y: 0.24141538, z: 0.97072595}
+  m_LocalRotation: {x: 0.000000029802322, y: 0.7071067, z: -0.000000029802322, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.73472, z: 0.25000006}
+  m_LocalScale: {x: 0.24141538, y: 0.24141537, z: 1.0430064}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 328725652469669650}
-  m_RootOrder: 1
+  m_Father: {fileID: 3530391852261721207}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4180155227769628904
 MeshFilter:

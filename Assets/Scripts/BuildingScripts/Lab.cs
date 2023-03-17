@@ -8,6 +8,8 @@ public class Lab : Building
 
     private GameObject gridScriptAttach;
 
+    public IntValue science;
+
     void Start()
     {
         gridScriptAttach = GameObject.Find("Terrain");
@@ -23,7 +25,7 @@ public class Lab : Building
     private void OnTriggerEnter(Collider collision)
     {
         Destroy(collision.gameObject);
-        gridScriptAttach.GetComponent<GridScript>().IncrementResearch();
+        science.Increment();
         animator.Play("ReciveObject");
     }
 

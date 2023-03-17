@@ -16,11 +16,6 @@ public class GridScript : MonoBehaviour
     public GameObject despawner_build;
     [SerializeField] TMP_Text aufgabenText;
 
-    public int money_initial;
-    public TMP_Text money_text;
-    public TMP_Text research_text;
-    public TMP_Text power_text;
-
     int aufgabenNummer = 1;
     
     public float sell_fraction;
@@ -30,10 +25,13 @@ public class GridScript : MonoBehaviour
     public AudioClip whoosh2;
     public AudioSource audio_src;
 
-    int money_amt;
-    int researchLevel = 0;
+    public IntValue money;
+    public IntValue research;
+
     int powerRequired = 0;
     int powerAvailable = 0;
+    public TMP_Text power_text;
+
 
     #region Aufgabenvariablen
     int[] erforderlicheResourcen = new int [7];
@@ -52,7 +50,9 @@ public class GridScript : MonoBehaviour
 
     public List<GameObject> buildings;
     public Material building_cursor_mat;
-    public GameObject arrow;
+    
+    GameObject arrow;
+    public GameObject arrowPrefab;
     GameObject building_to_spawn;
     GameObject building_cursor;
     Quaternion build_rotation = Quaternion.identity;
@@ -140,8 +140,9 @@ public class GridScript : MonoBehaviour
 
         audio_src = GetComponent<AudioSource>();
 
+        arrow = arrowPrefab;
         SetBuilding(initial_building);
-        money_amt = money_initial;
+        
         powerAvailable = 0;
 
         NeueAufgabe();
@@ -155,19 +156,15 @@ public class GridScript : MonoBehaviour
             b.GetComponent<Building>().destrucible = false;
         }
 
+        money.Reset();
+        research.Reset();
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        // TODO this doesnt belong here
-        /*money_text.text = $"Money: {money_amt} $\n\n" +
-            $"Research: {researchLevel}\n\n" +
-            $"Spirits: {spirits}";*/
-
-        money_text.text = money_amt.ToString();
-        research_text.text = researchLevel.ToString();
         power_text.text = $"{powerAvailable}/{powerRequired}";
 
         UpdatePower();
@@ -225,10 +222,10 @@ public class GridScript : MonoBehaviour
 
                 int cost = building_to_spawn.GetComponent<Building>().building_cost;
 
-                if (cost <= money_amt)
+                if (cost <= money.value)
                 {
 
-                    money_amt -= cost;
+                    money.value -= cost;
 
                     Vector3 pos = GridPosToWorldspace(grid_pos);
                     Vector3 spawnpos =  pos 
@@ -325,17 +322,23 @@ public class GridScript : MonoBehaviour
         else if (delete && ob_delete != null)
         {
             // remove from buildings && delete
-
-            money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().building_cost * sell_fraction);
-            powerRequired -= ob_delete.GetComponent<Building>().powerConsumption;
-
-            buildings.Remove(ob_delete);
-            Object.Destroy(ob_delete);
+            delete_building_from_grid(ob_delete);
             
         }
 
         return true;
         
+    }
+
+    public void delete_building_from_grid(GameObject ob_delete)
+    {
+        money.value += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().building_cost * sell_fraction);
+        powerRequired -= ob_delete.GetComponent<Building>().powerConsumption;
+
+        buildings.Remove(ob_delete);
+
+        Object.Destroy(ob_delete);
+
     }
 
     (int, int) ReturnGridCoordinate(Vector3 pos)
@@ -357,10 +360,15 @@ public class GridScript : MonoBehaviour
 
     public void SetBuilding(GameObject building)
     {
+        
         Object.Destroy(building_cursor);
         Object.Destroy(arrow);
+
         building_to_spawn = building;
+        
         building_cursor = Instantiate(building, Vector3.zero, build_rotation);
+        arrow = Instantiate(arrow, Vector3.zero, build_rotation);
+
         arrow = Instantiate(arrow, Vector3.zero, build_rotation);
         SetMaterial();
         building_cursor.GetComponent<BoxCollider>().enabled = false;
@@ -368,8 +376,6 @@ public class GridScript : MonoBehaviour
 
         powerRequired += building_to_spawn.GetComponent<Building>().powerConsumption;
     }
-
-    public void IncrementResearch() { researchLevel++; }
 
     public void SetMaterial()
     {
@@ -442,11 +448,6 @@ public class GridScript : MonoBehaviour
             NeueAufgabe();
             AktualisiereAufgabenText();
         }
-    }
-
-    public void IncrementMoney()
-    {
-        money_amt++;
     }
 
     public void ChangePower(int amount)

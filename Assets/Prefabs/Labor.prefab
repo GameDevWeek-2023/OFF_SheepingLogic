@@ -253,11 +253,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_height: 0
   building_cost: 10
+  powerConsumption: 0
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
   animator: {fileID: 8707198178775867050}
+  science: {fileID: 11400000, guid: c77b2003e83785e988d25419cb0a893a, type: 2}
 --- !u!1001 &8361262135713484033
 PrefabInstance:
   m_ObjectHideFlags: 0

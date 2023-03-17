@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Building : MonoBehaviour
+public class Building : MonoBehaviour
 {
 
     public (int, int) grid_position;
 
-    public float building_height;
+    public float building_height =0;
 
-    public int building_cost;
+    public int building_cost =0;
 
-    public int powerConsumption;
+    public int powerConsumption =0;
 
     public AudioClip build_completed_clip;
 
