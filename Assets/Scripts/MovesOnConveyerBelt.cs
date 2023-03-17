@@ -11,6 +11,8 @@ public class MovesOnConveyerBelt : MonoBehaviour
     {
         rb= GetComponent<Rigidbody>();
         col= GetComponent<Collider>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
         col.isTrigger = true;
     }
     void Update()

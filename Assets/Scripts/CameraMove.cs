@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraMove : MonoBehaviour
 {
     
     Vector3 forw;
-    float pan_velocity = 10.0f;
-    float scroll_velocity = 10.0f;
+    float pan_velocity = 13.0f;
+    float scroll_velocity = 15.0f;
 
-    public int cameraDragSpeed = 150;
+    int cameraDragSpeed = 120;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +35,10 @@ public class CameraMove : MonoBehaviour
         if (Input.GetMouseButton(2))
         {
             float speed = cameraDragSpeed * Time.deltaTime;
-            //transform.position -= new Vector3(Input.GetAxis("Mouse X") * speed, 0, Input.GetAxis("Mouse Y") * speed);
-            //Debug.Log("X -> " + Input.GetAxis("Mouse X") + "    Y -> " + Input.GetAxis("Mouse Y"));
-            if (Input.GetAxis("Mouse Y") > 0) { transform.position += forw * speed; }
-            if (Input.GetAxis("Mouse Y") < 0) { transform.position -= forw * speed; }
-            if (Input.GetAxis("Mouse X") > 0) { transform.position += transform.right * speed; }
-            if (Input.GetAxis("Mouse X") < 0) { transform.position -= transform.right * speed; }
+            if (Input.GetAxis("Mouse Y") > 0) { transform.position -= forw * speed; }
+            if (Input.GetAxis("Mouse Y") < 0) { transform.position += forw * speed; }
+            if (Input.GetAxis("Mouse X") > 0) { transform.position -= transform.right * speed; }
+            if (Input.GetAxis("Mouse X") < 0) { transform.position += transform.right * speed; }
         }
 
         if (Input.GetKey(KeyCode.W)) { transform.position += forw * pan_velocity * Time.deltaTime; }
@@ -49,7 +48,11 @@ public class CameraMove : MonoBehaviour
 
         // https://stackoverflow.com/questions/40830412/unity3d-move-camera-using-mouse-wheel
         float scroll = Input.GetAxis ("Mouse ScrollWheel");
-        transform.Translate(0, 0, scroll * scroll_velocity, Space.Self);
+
+        if (!EventSystem.current.IsPointerOverGameObject()) //might not be ideal, but works
+        {
+            transform.Translate(0, 0, scroll * scroll_velocity, Space.Self);    
+        }
 
     }
 

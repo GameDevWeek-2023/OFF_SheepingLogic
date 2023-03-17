@@ -31,8 +31,9 @@ public class Splitter : Spawner
         {
             animator1.Play("Nach Rects Drehen");
         }
-        yield return new WaitForSeconds(spawn_delay);
+        yield return new WaitForSeconds(spawn_delay-0.15f);
         animator2.Play("SpawnObject");
+        yield return new WaitForSeconds(0.15f);
         gob.SetActive(true);
         Spawn(gob, direction * gameObject.transform.right);
         direction *= -1;

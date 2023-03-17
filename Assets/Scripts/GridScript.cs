@@ -16,7 +16,6 @@ public class GridScript : MonoBehaviour
     public GameObject despawner_build;
     [SerializeField] TMP_Text aufgabenText;
 
-
     int aufgabenNummer = 1;
     
     public float sell_fraction;
@@ -134,11 +133,6 @@ public class GridScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // TODO this doesnt belong here
-        /*money_text.text = $"Money: {money_amt} $\n\n" +
-            $"Research: {researchLevel}\n\n" +
-            $"Spirits: {spirits}";*/
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -331,8 +325,9 @@ public class GridScript : MonoBehaviour
 
     public void SetBuilding(GameObject building)
     {
-        if (building_cursor != null)    Object.Destroy(building_cursor);
-        if (arrow != null)              Object.Destroy(arrow);
+        
+        Object.Destroy(building_cursor);
+        Object.Destroy(arrow);
 
         building_to_spawn = building;
         

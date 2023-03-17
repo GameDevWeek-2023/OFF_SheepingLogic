@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3007364050403660410}
   - component: {fileID: 3204177875981117815}
+  - component: {fileID: 5770407876443547862}
   m_Layer: 0
   m_Name: Baum2
   m_TagString: Untagged
@@ -46,6 +47,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 2}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &5770407876443547862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377134274733061258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20244db62571684838f0eb4858212c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building_height: 0
+  building_cost: 0
+  powerConsumption: 0
+  build_completed_clip: {fileID: 0}
+  hasAudioLoop: 0
+  destrucible: 1
 --- !u!1001 &5929562852805507841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,3 +181,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2823557303607371243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812644614141363792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20244db62571684838f0eb4858212c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building_height: 0
+  building_cost: 0
+  powerConsumption: 0
+  build_completed_clip: {fileID: 0}
+  hasAudioLoop: 0
+  destrucible: 0

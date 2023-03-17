@@ -7,6 +7,7 @@ public class PeriodicSpawner : Spawner
 {
 
     float last_spawn_time;
+    bool playedAnimation = false;
     
     public GameObject spawn_object;
     [SerializeField] Animator animator;
@@ -23,11 +24,17 @@ public class PeriodicSpawner : Spawner
     {
 
         float t = Time.time;
+        
+        if (t - last_spawn_time > spawn_delay-0.15f&&!playedAnimation)
+        {
+            animator.Play("SpawnObject");
+            playedAnimation = true;
+        }
 
         if (t - last_spawn_time > spawn_delay)
         {
+            playedAnimation = false;
             last_spawn_time = t;
-            animator.Play("SpawnObject");
             Spawn(spawn_object, gameObject.transform.forward);
 
         }
