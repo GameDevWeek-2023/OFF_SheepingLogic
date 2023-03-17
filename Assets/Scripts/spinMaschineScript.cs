@@ -22,7 +22,7 @@ public class spinMaschineScript : Spawner
     }
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.transform.forward ==transform.forward || collision.transform.forward == -transform.forward && collision.name.Contains("Wolle")) 
+        if(collision.transform.forward == transform.forward || collision.transform.forward == -transform.forward && collision.name.Contains("Wolle")) 
         {
             GameObject gob = collision.gameObject;
             gob.SetActive(false);
