@@ -27,7 +27,17 @@ public class Powerplant : Spawner
         audio_src = GetComponent<AudioSource>();
         audio_src.PlayOneShot(building_SFX);
 
-        StartCoroutine(SpawnNext(gob));
+        if (gob.tag == "weisseWolle" || gob.tag == "schwarzeWolle")
+        {
+            // TODO increment power
+            StartCoroutine(SpawnNext(gob));
+            
+        }
+        else
+        {
+            // TODO decrement power
+            Destroy(gob);
+        }
     }
 
 

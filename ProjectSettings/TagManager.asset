@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Terrain
   - Building
+  - Undefined
+  - weissesSchaf
+  - schwarzesSchaf
+  - geschorenesSchaf
+  - weisseWolle
   layers:
   - Default
   - TransparentFX
