@@ -325,7 +325,7 @@ public class GridScript : MonoBehaviour
     public void SetBuilding(GameObject building)
     {
         Object.Destroy(building_cursor);
-        
+        Object.Destroy(arrow);
         building_to_spawn = building;
         building_cursor = Instantiate(building, Vector3.zero, build_rotation);
         arrow = Instantiate(arrow, Vector3.zero, build_rotation);
