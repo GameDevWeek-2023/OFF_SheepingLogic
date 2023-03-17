@@ -31,10 +31,9 @@ public class GridScript : MonoBehaviour
     public AudioSource audio_src;
 
     int money_amt;
-    int researchLevel;
-    int powerRequired;
+    int researchLevel = 0;
+    int powerRequired = 0;
     int powerAvailable = 0;
-    int spirits;
 
     #region Aufgabenvariablen
     int[] erforderlicheResourcen = new int [7];
@@ -101,6 +100,36 @@ public class GridScript : MonoBehaviour
         }
     }
 
+    public void UpdatePower()
+    {
+        int availablePower = 0;
+        int requiredPower = 0;
+        List<GameObject> powerPlants = new List<GameObject>();
+
+        powerPlants.AddRange(GameObject.FindGameObjectsWithTag("Power"));
+        
+        foreach (GameObject p in powerPlants)
+        {
+            if (p.GetComponent<Powerplant>().isOperating)
+            {
+                availablePower += p.GetComponent<Powerplant>().powerLevel;
+            }
+        }
+
+        Debug.Log(availablePower);
+
+        powerAvailable = availablePower;
+
+        foreach (GameObject b in buildings)
+        {
+            requiredPower += b.GetComponent<Building>().powerConsumption;
+        }
+
+        Debug.Log(requiredPower);
+
+        powerRequired = requiredPower; 
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -140,6 +169,8 @@ public class GridScript : MonoBehaviour
         money_text.text = money_amt.ToString();
         research_text.text = researchLevel.ToString();
         power_text.text = $"{powerAvailable}/{powerRequired}";
+
+        UpdatePower();
 
         if (Input.GetKeyDown(KeyCode.P))
         {

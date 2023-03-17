@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 5491631158948912747}
   m_Layer: 0
   m_Name: Wool Power Plant
-  m_TagString: Untagged
+  m_TagString: Power
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -279,9 +279,11 @@ MonoBehaviour:
   destrucible: 1
   spawn_height: 0.6
   spawn_delay: 0
-  ash: {fileID: 0}
+  ash: {fileID: 337124144294164153, guid: 2be3c5ea4598b9e49a51994026b5b4ea, type: 3}
   powerLevel: 20
+  fuelLevel: 0
   building_SFX: {fileID: 0}
+  isOperating: 0
 --- !u!1001 &5344500268890761690
 PrefabInstance:
   m_ObjectHideFlags: 0
