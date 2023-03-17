@@ -219,9 +219,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_height: 0
   building_cost: 6
+  powerConsumption: 10
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
+  hasPower: 1
   colorful_sheep: {fileID: 2070449825239501336, guid: 73acaf94fecc3f9598d69383017aa7e6,
     type: 3}

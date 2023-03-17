@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building_height: 0
-  building_cost: 10
-  powerConsumption: 0
+  building_cost: 20
+  powerConsumption: 5
   build_completed_clip: {fileID: 0}
   hasAudioLoop: 0
   destrucible: 1
