@@ -112,7 +112,7 @@ public class GridScript : MonoBehaviour
 
         SetBuilding(initial_building);
         money_amt = money_initial;
-        power = 0;
+        powerAvailable = 0;
 
         NeueAufgabe();
         AktualisiereAufgabenText();
