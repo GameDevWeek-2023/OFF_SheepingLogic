@@ -13,19 +13,22 @@ public class MilkMachine : Spawner
 
     private void Start()
     {
-        animator.Play("PLaceObject");
+        animator.Play("PlaceObject");
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        GameObject gob = collision.gameObject;
-        gob.SetActive(false);
+        if ((collision.transform.forward == transform.forward || collision.transform.forward == -transform.forward))
+        {
+            GameObject gob = collision.gameObject;
+            gob.SetActive(false);
 
-        audio_src = GetComponent<AudioSource>();
-        audio_src.PlayOneShot(building_SFX);
-        animator.Play("ReciveObject");
+            audio_src = GetComponent<AudioSource>();
+            audio_src.PlayOneShot(building_SFX);
+            animator.Play("ReciveObject");
 
-        StartCoroutine(SpawnNext(gob));
+            StartCoroutine(SpawnNext(gob));
+        }
     }
 
 
