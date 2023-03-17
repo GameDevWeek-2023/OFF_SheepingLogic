@@ -316,6 +316,7 @@ MonoBehaviour:
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
+  destrucible: 1
 --- !u!4 &8735153611731135547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e7a362301a37c5c49b85652da598eecb,

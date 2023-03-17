@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 2473202233371019125}
   - component: {fileID: 2473202233371019122}
   m_Layer: 5
-  m_Name: "F\xF6rderbandButton 1"
+  m_Name: "F\xF6rderbandButton"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

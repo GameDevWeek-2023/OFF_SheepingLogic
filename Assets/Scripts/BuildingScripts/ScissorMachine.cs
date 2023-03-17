@@ -7,10 +7,15 @@ public class ScissorMachine : Spawner
 
     public GameObject geschorenes_schaf;
     [SerializeField] GameObject wolle;
+    [SerializeField] Animator animator;
 
     public AudioClip building_SFX;
     private AudioSource audio_src;
 
+    private void Start()
+    {
+        animator.Play("PlaceObject");
+    }
     void OnCollisionEnter(Collision collision)
     {
 
@@ -24,6 +29,7 @@ public class ScissorMachine : Spawner
 
         audio_src = GetComponent<AudioSource>();
         audio_src.PlayOneShot(building_SFX);
+        animator.Play("ReciveObject");
 
         StartCoroutine(SpawnNext(gob));
     }
@@ -33,7 +39,7 @@ public class ScissorMachine : Spawner
     {
 
         yield return new WaitForSeconds(spawn_delay);
-
+        animator.Play("SpawnObject");
         gob.SetActive(true);
         Spawn(geschorenes_schaf, gob.transform.forward);
         Spawn(wolle, -transform.right);
