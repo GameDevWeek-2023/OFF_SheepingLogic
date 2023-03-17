@@ -45,7 +45,14 @@ public class MovesOnConveyerBelt : MonoBehaviour
                     }
                     else
                     {
-                        gameObject.transform.position += -Mathf.Sign(innerp) * go.transform.right * velocity * Time.deltaTime;
+                        if ((go.transform.right * velocity * Time.deltaTime).magnitude > delta.magnitude)
+                        {
+                            gameObject.transform.position = go.transform.position;    
+                        }
+                        else
+                        {
+                            gameObject.transform.position += -Mathf.Sign(innerp) * go.transform.right * velocity * Time.deltaTime;
+                        }
                     }
 
                 }
