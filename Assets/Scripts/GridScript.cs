@@ -19,6 +19,7 @@ public class GridScript : MonoBehaviour
     public int money_initial;
     public TMP_Text money_text;
     public TMP_Text research_text;
+    public TMP_Text power_text;
 
     int aufgabenNummer = 1;
     
@@ -138,6 +139,7 @@ public class GridScript : MonoBehaviour
 
         money_text.text = money_amt.ToString();
         research_text.text = researchLevel.ToString();
+        power_text.text = $"{powerAvailable}/{powerRequired}";
 
         if (Input.GetKeyDown(KeyCode.P))
         {
