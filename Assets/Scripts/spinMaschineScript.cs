@@ -22,7 +22,7 @@ public class spinMaschineScript : Spawner
     }
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.transform.forward == transform.forward || collision.transform.forward == -transform.forward && collision.name.Contains("Wolle")) 
+        if((collision.transform.forward == transform.forward || collision.transform.forward == -transform.forward) && collision.name.Contains("Wolle"))
         {
             GameObject gob = collision.gameObject;
             gob.SetActive(false);
@@ -39,8 +39,9 @@ public class spinMaschineScript : Spawner
     IEnumerator SpawnNext(GameObject gob)
     {
 
-        yield return new WaitForSeconds(spawn_delay);
+        yield return new WaitForSeconds(spawn_delay-0.15f);
         animator.Play("SpawnObject");
+        yield return new WaitForSeconds(0.15f);
         gob.SetActive(true);
         Spawn(garn, gob.transform.forward);
         Destroy(gob);
