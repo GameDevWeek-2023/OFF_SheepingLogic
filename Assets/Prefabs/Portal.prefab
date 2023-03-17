@@ -253,9 +253,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_height: 0
   building_cost: 10
+  powerConsumption: 0
   build_completed_clip: {fileID: 0}
   hasAudioLoop: 0
   destrucible: 1
+  hasPower: 1
   spawn_height: 0.55
   spawn_delay: 4.28
   spawn_object: {fileID: 2070449825239501336, guid: f8b6cd093aee992d298f3320f7efd747,
