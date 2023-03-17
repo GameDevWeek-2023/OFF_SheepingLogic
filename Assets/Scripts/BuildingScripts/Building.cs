@@ -19,6 +19,8 @@ public class Building : MonoBehaviour
 
     public bool destrucible=true;
 
+    public bool hasPower = true;
+
     public virtual void PlayBuildSound()
     {
         GetComponent<AudioSource>().PlayOneShot(build_completed_clip);

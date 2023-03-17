@@ -277,13 +277,14 @@ MonoBehaviour:
   build_completed_clip: {fileID: 0}
   hasAudioLoop: 0
   destrucible: 1
+  hasPower: 1
   spawn_height: 0.6
   spawn_delay: 0
   ash: {fileID: 337124144294164153, guid: 2be3c5ea4598b9e49a51994026b5b4ea, type: 3}
   powerLevel: 20
   fuelLevel: 0
   building_SFX: {fileID: 0}
-  isOperating: 0
+  isOperating: 1
 --- !u!1001 &5344500268890761690
 PrefabInstance:
   m_ObjectHideFlags: 0

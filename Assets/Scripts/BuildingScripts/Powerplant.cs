@@ -14,7 +14,7 @@ public class Powerplant : Spawner
     private AudioSource audio_src;
     private GameObject gridScriptAttach;
 
-    public bool isOperating;
+    public bool isOperating = true;
 
     private void Start()
     {

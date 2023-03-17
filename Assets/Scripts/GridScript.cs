@@ -105,6 +105,8 @@ public class GridScript : MonoBehaviour
         int availablePower = 10;
         int requiredPower = 0;
         List<GameObject> powerPlants = new List<GameObject>();
+        powerPlants.Clear();
+        
 
         powerPlants.AddRange(GameObject.FindGameObjectsWithTag("Power"));
         
@@ -169,6 +171,21 @@ public class GridScript : MonoBehaviour
 
         UpdatePower();
 
+        if (powerAvailable < powerRequired)
+        {
+            foreach (GameObject b in buildings)
+            {
+                b.GetComponent<Building>().hasPower = false;
+            }
+        }
+        else if (powerAvailable >= powerRequired)
+        {
+            foreach (GameObject b in buildings)
+            {
+                b.GetComponent<Building>().hasPower = true;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (Time.timeScale == 1)
@@ -224,20 +241,22 @@ public class GridScript : MonoBehaviour
 
                 if (cost <= money.value)
                 {
+                    if (powerRequired + building_to_spawn.GetComponent<Building>().powerConsumption <= powerAvailable)
+                    {
+                        money.value -= cost;
 
-                    money.value -= cost;
+                        Vector3 pos = GridPosToWorldspace(grid_pos);
+                        Vector3 spawnpos = pos
+                            + new Vector3(resolution / 2.0f, building_to_spawn.GetComponent<Building>().building_height, resolution / 2.0f);
 
-                    Vector3 pos = GridPosToWorldspace(grid_pos);
-                    Vector3 spawnpos =  pos 
-                        + new Vector3(resolution/2.0f, building_to_spawn.GetComponent<Building>().building_height, resolution/2.0f);
-        
-                    GameObject newObject = Instantiate(building_to_spawn, spawnpos, build_rotation);
-                    newObject.GetComponent<Building>().grid_position = grid_pos;
+                        GameObject newObject = Instantiate(building_to_spawn, spawnpos, build_rotation);
+                        newObject.GetComponent<Building>().grid_position = grid_pos;
 
-                    newObject.GetComponent<Building>().PlayBuildSound();
-                    // newObject.GetComponent<AudioSource>().PlayOneShot();
-                    
-                    buildings.Add(newObject);
+                        newObject.GetComponent<Building>().PlayBuildSound();
+                        // newObject.GetComponent<AudioSource>().PlayOneShot();
+
+                        buildings.Add(newObject);
+                    }
                 }
 
             }
