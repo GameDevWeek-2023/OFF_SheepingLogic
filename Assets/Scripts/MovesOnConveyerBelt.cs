@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovesOnConveyerBelt : MonoBehaviour
 {
-     Rigidbody rb;
+    Rigidbody rb;
     Collider col;
     bool vomBandgefallen = false;
     private void Start()

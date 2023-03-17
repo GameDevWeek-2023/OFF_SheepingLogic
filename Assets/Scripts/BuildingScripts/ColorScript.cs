@@ -10,11 +10,13 @@ public class ColorScript : Building
     void OnTriggerEnter(Collider collision)   
     {
 
-        GetComponent<Animation>().Play();
-        Transform t = collision.gameObject.transform;
-        Destroy(collision.gameObject);
-        Instantiate(colorful_sheep, t.position, t.rotation);
-
+        if (collision.gameObject.tag == "weissesSchaf" || collision.gameObject.tag == "schwarzesSchaf")
+        {
+            //GetComponent<Animation>().Play();
+            Transform t = collision.gameObject.transform;
+            Destroy(collision.gameObject);
+            Instantiate(colorful_sheep, t.position, t.rotation);
+        }
     }
 
 }

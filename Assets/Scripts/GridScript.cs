@@ -52,7 +52,9 @@ public class GridScript : MonoBehaviour
 
     public List<GameObject> buildings;
     public Material building_cursor_mat;
-    public GameObject arrow;
+    
+    GameObject arrow;
+    public GameObject arrowPrefab;
     GameObject building_to_spawn;
     GameObject building_cursor;
     Quaternion build_rotation = Quaternion.identity;
@@ -110,6 +112,7 @@ public class GridScript : MonoBehaviour
 
         audio_src = GetComponent<AudioSource>();
 
+        arrow = arrowPrefab;
         SetBuilding(initial_building);
         money_amt = money_initial;
         powerAvailable = 0;
@@ -324,10 +327,14 @@ public class GridScript : MonoBehaviour
 
     public void SetBuilding(GameObject building)
     {
-        Object.Destroy(building_cursor);
-        
+        if (building_cursor != null)    Object.Destroy(building_cursor);
+        if (arrow != null)              Object.Destroy(arrow);
+
         building_to_spawn = building;
+        
         building_cursor = Instantiate(building, Vector3.zero, build_rotation);
+        arrow = Instantiate(arrow, Vector3.zero, build_rotation);
+
         arrow = Instantiate(arrow, Vector3.zero, build_rotation);
         SetMaterial();
         building_cursor.GetComponent<BoxCollider>().enabled = false;
