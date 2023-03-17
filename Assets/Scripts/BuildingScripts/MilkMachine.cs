@@ -13,7 +13,7 @@ public class MilkMachine : Spawner
 
     private void Start()
     {
-        animator.Play("PLaceObject");
+        animator.Play("PlaceObject");
     }
     void OnCollisionEnter(Collision collision)
     {
