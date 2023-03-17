@@ -18,8 +18,8 @@ public class GridScript : MonoBehaviour
 
     public int money_initial;
     public TMP_Text money_text;
+    public TMP_Text research_text;
 
-    int money_amt;
     int aufgabenNummer = 1;
     
     public float sell_fraction;
@@ -29,7 +29,9 @@ public class GridScript : MonoBehaviour
     public AudioClip whoosh2;
     public AudioSource audio_src;
 
+    int money_amt;
     int researchLevel;
+    int power;
     int spirits;
 
     #region Aufgabenvariablen
@@ -103,10 +105,14 @@ public class GridScript : MonoBehaviour
     {
         togglePauseMenu(false);
         fadeInOut(is_fade_in: true);
-        audio_src= GetComponent<AudioSource>();
         fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
+
+        audio_src = GetComponent<AudioSource>();
+
         SetBuilding(initial_building);
         money_amt = money_initial;
+        power = 0;
+
         NeueAufgabe();
         AktualisiereAufgabenText();
 
@@ -125,9 +131,12 @@ public class GridScript : MonoBehaviour
     {
 
         // TODO this doesnt belong here
-        money_text.text = $"Money: {money_amt} $\n\n" +
+        /*money_text.text = $"Money: {money_amt} $\n\n" +
             $"Research: {researchLevel}\n\n" +
-            $"Spirits: {spirits}";
+            $"Spirits: {spirits}";*/
+
+        money_text.text = money_amt.ToString();
+        research_text.text = researchLevel.ToString();
 
         if (Input.GetKeyDown(KeyCode.P))
         {
