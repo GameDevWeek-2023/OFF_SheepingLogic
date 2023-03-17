@@ -18,8 +18,8 @@ public class GridScript : MonoBehaviour
 
     public int money_initial;
     public TMP_Text money_text;
+    public TMP_Text research_text;
 
-    int money_amt;
     int aufgabenNummer = 1;
     
     public float sell_fraction;
@@ -29,7 +29,10 @@ public class GridScript : MonoBehaviour
     public AudioClip whoosh2;
     public AudioSource audio_src;
 
+    int money_amt;
     int researchLevel;
+    int powerRequired;
+    int powerAvailable = 0;
     int spirits;
 
     #region Aufgabenvariablen
@@ -103,10 +106,14 @@ public class GridScript : MonoBehaviour
     {
         togglePauseMenu(false);
         fadeInOut(is_fade_in: true);
-        audio_src= GetComponent<AudioSource>();
         fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
+
+        audio_src = GetComponent<AudioSource>();
+
         SetBuilding(initial_building);
         money_amt = money_initial;
+        powerAvailable = 0;
+
         NeueAufgabe();
         AktualisiereAufgabenText();
 
@@ -125,9 +132,12 @@ public class GridScript : MonoBehaviour
     {
 
         // TODO this doesnt belong here
-        money_text.text = $"Money: {money_amt} $\n\n" +
+        /*money_text.text = $"Money: {money_amt} $\n\n" +
             $"Research: {researchLevel}\n\n" +
-            $"Spirits: {spirits}";
+            $"Spirits: {spirits}";*/
+
+        money_text.text = money_amt.ToString();
+        research_text.text = researchLevel.ToString();
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -284,6 +294,7 @@ public class GridScript : MonoBehaviour
             // remove from buildings && delete
 
             money_amt += (int) Mathf.Ceil(ob_delete.GetComponent<Building>().building_cost * sell_fraction);
+            powerRequired -= ob_delete.GetComponent<Building>().powerConsumption;
 
             buildings.Remove(ob_delete);
             Object.Destroy(ob_delete);
@@ -321,6 +332,8 @@ public class GridScript : MonoBehaviour
         SetMaterial();
         building_cursor.GetComponent<BoxCollider>().enabled = false;
         building_cursor.GetComponent<Building>().enabled = false;
+
+        powerRequired += building_to_spawn.GetComponent<Building>().powerConsumption;
     }
 
     public void IncrementResearch() { researchLevel++; }
@@ -401,5 +414,10 @@ public class GridScript : MonoBehaviour
     public void IncrementMoney()
     {
         money_amt++;
+    }
+
+    public void ChangePower(int amount)
+    {
+        powerAvailable += amount;
     }
 }

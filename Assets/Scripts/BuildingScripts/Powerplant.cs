@@ -5,7 +5,9 @@ using UnityEngine;
 public class Powerplant : Spawner
 {
 
-    [SerializeField] GameObject wolle;
+    [SerializeField] GameObject ash;
+
+    public int powerLevel = 20;
 
     public AudioClip building_SFX;
     private AudioSource audio_src;
@@ -24,14 +26,12 @@ public class Powerplant : Spawner
 
     IEnumerator SpawnNext(GameObject gob)
     {
-
         yield return new WaitForSeconds(spawn_delay);
 
         gob.SetActive(true);
         Spawn(gob, gob.transform.forward);
-        Spawn(wolle, -transform.right);
+        Spawn(ash, -transform.right);
         Destroy(gob);
-
     }
 
 }

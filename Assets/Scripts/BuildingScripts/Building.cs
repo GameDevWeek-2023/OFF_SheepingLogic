@@ -11,6 +11,8 @@ public abstract class Building : MonoBehaviour
 
     public int building_cost;
 
+    public int powerConsumption;
+
     public AudioClip build_completed_clip;
 
     public bool hasAudioLoop=false;
