@@ -936,8 +936,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 383.68, y: -555}
-  m_SizeDelta: {x: 383.6773, y: 1012.8943}
+  m_AnchoredPosition: {x: 383.68, y: -620.36426}
+  m_SizeDelta: {x: 383.6773, y: 1135.1885}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &105083886
 MonoBehaviour:
@@ -7168,7 +7168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1735471892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7211,8 +7211,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Money
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 86f68e3bcec22c448bd90c577480db4a, type: 2}
-  m_sharedMaterial: {fileID: 4629635571965517820, guid: 86f68e3bcec22c448bd90c577480db4a,
+  m_fontAsset: {fileID: 11400000, guid: ee674ff32d805b24babc7635af81e6d5, type: 2}
+  m_sharedMaterial: {fileID: 2867051729190320492, guid: ee674ff32d805b24babc7635af81e6d5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8521,8 +8521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.0205002, y: 1.0102997}
-  m_SizeDelta: {x: 1834.7872, y: 923.4553}
+  m_AnchoredPosition: {x: -2.0205002, y: -1.0982018}
+  m_SizeDelta: {x: 1834.7872, y: 1003.5793}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048575459
 MonoBehaviour:
@@ -8579,7 +8579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2086090718
 RectTransform:
   m_ObjectHideFlags: 0
