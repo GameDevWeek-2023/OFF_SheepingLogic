@@ -16,10 +16,13 @@ public class Splitter : Spawner
 
     private void OnTriggerEnter(Collider collision)
     {
-        GameObject gob = collision.gameObject;
-        gob.SetActive(false);
-        StartCoroutine(SpawnNext(gob));
-        animator2.Play("ReciveObject");
+        if(collision.transform.forward == -transform.forward) 
+        {
+            GameObject gob = collision.gameObject;
+            gob.SetActive(false);
+            StartCoroutine(SpawnNext(gob));
+            animator2.Play("ReciveObject");
+        }
     }
     IEnumerator SpawnNext(GameObject gob)
     {
