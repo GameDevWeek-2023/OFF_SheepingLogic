@@ -86,11 +86,11 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
             Vector3 grav = gridScriptAttach.GetComponent<GridScript>().GetGravity(transform.position); 
 
-            float ang_velocity = 1.0f;
+            float ang_velocity = 4.0f;
             gameObject.transform.forward = (gameObject.transform.forward + grav * Time.deltaTime * ang_velocity).normalized;
 
             gameObject.transform.position += 
-                5.0f * grav * velocity * Time.deltaTime;
+                5.0f * gameObject.transform.forward * velocity * Time.deltaTime;
 
         }
 
