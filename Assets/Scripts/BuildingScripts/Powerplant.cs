@@ -69,7 +69,7 @@ public class Powerplant : Spawner
 
     IEnumerator SpawnNext(GameObject gob)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
 
         Spawn(ash, transform.right);
         Destroy(gob);
