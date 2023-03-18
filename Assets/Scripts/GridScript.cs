@@ -496,6 +496,11 @@ public class GridScript : MonoBehaviour
         powerAvailable += amount;
     }
 
+    public void HideIntroPanel()
+    {
+        GameObject.Find("IntroPanel").SetActive(false);
+    }
+
     public Vector3 GetGravity (Vector3 pos)
     {
 
