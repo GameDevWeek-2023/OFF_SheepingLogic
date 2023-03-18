@@ -106,7 +106,7 @@ public class GridScript : MonoBehaviour
 
     public void UpdatePower()
     {
-        int availablePower = 10;
+        int availablePower = 20;
         int requiredPower = 0;
         List<GameObject> powerPlants = new List<GameObject>();
         powerPlants.Clear();
@@ -495,4 +495,25 @@ public class GridScript : MonoBehaviour
     {
         powerAvailable += amount;
     }
+
+    public Vector3 GetGravity (Vector3 pos)
+    {
+
+        Vector3 grav = new Vector3();
+
+        foreach (GameObject go in buildings)
+        {
+
+            float r = Mathf.Min(Vector3.Distance(go.transform.position, pos), 1.0f);
+            grav += (1 / Mathf.Pow(r, 2)) * (pos - go.transform.position).normalized;
+
+        }
+
+        grav.y = 0.0f;
+
+        if (grav.magnitude > 0) return grav.normalized;
+        else                    return new Vector3();
+
+    }
+
 }
