@@ -13,6 +13,9 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
     private GameObject gridScriptAttach;
 
+    float ang_velocity = 4.0f;
+    float speed_factor = 5.0f; 
+
     private void Start()
     {
         gridScriptAttach = GameObject.Find("Terrain");
@@ -38,7 +41,9 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
                 if (go.tag == "Building")
                 {
-                    transform.forward = go.transform.forward;
+                    
+                    // rotate sheep slowly
+                    gameObject.transform.forward = (gameObject.transform.forward + go.transform.forward * Time.deltaTime * ang_velocity *0.5f).normalized;
 
                     //transform.forward = go.transform.forward;
 
@@ -70,7 +75,7 @@ public class MovesOnConveyerBelt : MonoBehaviour
                     rb.useGravity = true;
                     col.isTrigger = false;
                     rb.AddForce(2*transform.forward + 1*transform.up, ForceMode.Impulse);
-                    if (isAlive)    { StartCoroutine(LaufeDavon()); }
+                    if (isAlive)    { StartCoroutine(Fliege()); StartCoroutine(LaufeDavon()); }
                     else            { StartCoroutine(ZerstoerHeruntergefallenesObjekt()); }                
                 }
 
@@ -86,11 +91,10 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
             Vector3 grav = gridScriptAttach.GetComponent<GridScript>().GetGravity(transform.position); 
 
-            float ang_velocity = 1.0f;
             gameObject.transform.forward = (gameObject.transform.forward + grav * Time.deltaTime * ang_velocity).normalized;
 
             gameObject.transform.position += 
-                5.0f * grav * velocity * Time.deltaTime;
+                speed_factor * grav * velocity * Time.deltaTime;
 
         }
 
@@ -102,14 +106,35 @@ public class MovesOnConveyerBelt : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    IEnumerator LaufeDavon()
+    IEnumerator Fliege()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
+
+        while (transform.position.y > 0.9f)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
         rb.isKinematic = true;
         rb.useGravity = false;
         move_freely = true;
+    }
+
+    IEnumerator LaufeDavon()
+    {
+        
+        // yield return new WaitForSeconds(1);
+        
         yield return new WaitForSeconds(20);
         Object.Destroy(gameObject);
+    }
+
+    public IEnumerator LerpObjectRotation(GameObject go)
+    {
+        yield return new WaitForSeconds(.7f);
+        transform.forward = Vector3.Lerp(transform.forward, go.transform.forward, Time.deltaTime * 3);
     }
 
 }
