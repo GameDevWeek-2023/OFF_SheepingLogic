@@ -168,7 +168,7 @@ MonoBehaviour:
   spawn_delay: 2
   wolle: {fileID: 7248567659180925962, guid: e719b5e19dcd97848a8f51ac9bbd9cf6, type: 3}
   animator: {fileID: 4634923352544411384}
-  building_SFX: {fileID: 8300000, guid: b22bd26ef414ec64d96a785b76a3c027, type: 3}
+  building_SFX: {fileID: 8300000, guid: a331b2ab63455f842a1b93d8d1f7255d, type: 3}
 --- !u!1001 &6964534376092003075
 PrefabInstance:
   m_ObjectHideFlags: 0
