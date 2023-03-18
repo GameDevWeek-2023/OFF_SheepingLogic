@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Balloon : Building
 {
-    
+    [SerializeField] Animator animator;
     public IntValue money;
     public Counter ct;
     public bool QuestCompleted =false;
@@ -19,7 +19,7 @@ public class Balloon : Building
 
     private void OnTriggerEnter(Collider collision)
     {
-
+        animator.Play("ReciveObject");
         if (collision.gameObject.tag == "weissesSchaf")         ct.WhiteSheep ++;
         if (collision.gameObject.tag == "schwarzesSchaf")       ct.BlackSheep ++;
         if (collision.gameObject.tag == "geschorenesSchaf")     ct.SnippedSheep ++;
