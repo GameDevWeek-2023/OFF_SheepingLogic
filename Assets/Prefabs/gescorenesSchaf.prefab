@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3032598726267750178}
+  - component: {fileID: 6111602007820313789}
+  - component: {fileID: 9217241758934140514}
   m_Layer: 0
   m_Name: gescorenesSchaf
   m_TagString: geschorenesSchaf
@@ -32,6 +34,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6111602007820313789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2926049314989150554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50446fa2a00f84e960e48f4ce6d55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 0
+--- !u!114 &9217241758934140514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2926049314989150554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fc978231165616b8e8d74c54a05afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip1: {fileID: 0}
+  clip2: {fileID: 0}
+  clip3: {fileID: 0}
+  clip4: {fileID: 0}
+  clip5: {fileID: 0}
 --- !u!1001 &966508228555390582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,36 +265,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2587348781312715477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119578267941602087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fc978231165616b8e8d74c54a05afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip1: {fileID: 8300000, guid: 9c6c4bb6cd808c2f6b5d9804bd22279c, type: 3}
-  clip2: {fileID: 8300000, guid: 2b73d3401015106b2960b28b63f8710e, type: 3}
-  clip3: {fileID: 8300000, guid: 124ba7d06d56f41bbbef4b15445a68d0, type: 3}
-  clip4: {fileID: 8300000, guid: fa1b1d412f004b2a194c15c8fc0d3852, type: 3}
-  clip5: {fileID: 8300000, guid: 911464cb3f577feb0b9528cb743ecb78, type: 3}
---- !u!114 &4854036877504654607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119578267941602087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e50446fa2a00f84e960e48f4ce6d55d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAlive: 0
 --- !u!95 &7282799583159765624
 Animator:
   serializedVersion: 4

@@ -6,6 +6,6 @@ public class SnippedSheep : Quest
 {
     protected override int GetValue()
     {
-        return ct.SnippedSheep;
+        return balloon.GetComponent<Balloon>().SnippedSheep;
     }
 }

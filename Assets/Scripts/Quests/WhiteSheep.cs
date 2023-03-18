@@ -8,6 +8,6 @@ public class WhiteSheep : Quest
     
     protected override int GetValue()
     {
-        return ct.WhiteSheep;
+        return balloon.GetComponent<Balloon>().WhiteSheep;
     }
 }
