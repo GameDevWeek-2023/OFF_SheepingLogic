@@ -38,14 +38,14 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
                 if (go.tag == "Building")
                 {
-                    StartCoroutine(LerpObjectRotation(go));
+                    transform.forward = go.transform.forward;
 
                     //transform.forward = go.transform.forward;
 
                     Vector3 delta = gameObject.transform.position - go.transform.position;
                     float innerp = Vector3.Dot(delta, go.transform.right);
 
-                    float tolerance = 0.001f;
+                    float tolerance = 0.01f;
                     if (innerp < tolerance && innerp > -tolerance)
                     {
                         gameObject.transform.position += go.transform.forward * velocity * Time.deltaTime;
@@ -112,9 +112,4 @@ public class MovesOnConveyerBelt : MonoBehaviour
         Object.Destroy(gameObject);
     }
 
-    public IEnumerator LerpObjectRotation(GameObject go)
-    {
-        yield return new WaitForSeconds(.7f);
-        transform.forward = Vector3.Lerp(transform.forward, go.transform.forward, Time.deltaTime * 3);
-    }
 }
