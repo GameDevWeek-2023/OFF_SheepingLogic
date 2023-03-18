@@ -59,6 +59,21 @@ public class GridScript : MonoBehaviour
 
     public bool isOverGUI = false;
     public GameObject fadePanel;
+    public GameObject popup_panel;
+    public TMP_Text popup_Text;
+
+    public void ShowPopUp(string content, float duration)
+    {
+        StartCoroutine(ShowPopUpCoroutine(content, duration));
+    }
+
+    public IEnumerator ShowPopUpCoroutine(string content, float duration)
+    {
+        popup_Text.text = content;
+        popup_panel.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        popup_panel.SetActive(false);
+    }
 
     //Pause Menu
     public GameObject PauseMenu;
@@ -135,6 +150,7 @@ public class GridScript : MonoBehaviour
     void Start()
     {
         togglePauseMenu(false);
+        popup_panel.SetActive(false);
         fadeInOut(is_fade_in: true);
         fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
 
@@ -255,6 +271,14 @@ public class GridScript : MonoBehaviour
 
                         buildings.Add(newObject);
                     }
+                    else
+                    {
+                        ShowPopUp("Not enough power", 2.5f);
+                    }
+                }
+                else
+                {
+                    ShowPopUp("Not enough money", 2.5f);
                 }
 
             }
