@@ -158,14 +158,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_height: 0
   building_cost: 10
-  powerConsumption: 20
+  powerConsumption: 0
   build_completed_clip: {fileID: 8300000, guid: a5ce4131a8c774b3e8c28c64b812bb5e,
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
+  hasPower: 1
   spawn_height: 0.6
   spawn_delay: 2
-  wolle: {fileID: 1910899575638027822, guid: ad0d7fbb17836404d9d5100f3d9837c7, type: 3}
+  wolle: {fileID: 7248567659180925962, guid: e719b5e19dcd97848a8f51ac9bbd9cf6, type: 3}
   animator: {fileID: 4634923352544411384}
   building_SFX: {fileID: 8300000, guid: b22bd26ef414ec64d96a785b76a3c027, type: 3}
 --- !u!1001 &6964534376092003075

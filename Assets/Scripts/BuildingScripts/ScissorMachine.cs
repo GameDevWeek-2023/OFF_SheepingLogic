@@ -19,17 +19,20 @@ public class ScissorMachine : Spawner
 
     void OnTriggerEnter(Collider collision)
     {
-        GameObject gob = collision.gameObject;
-        gob.SetActive(false);
-
-        if (gob.tag == "weißesSchaf" || gob.tag == "schwarzesSchaf")
+        if (collision.transform.forward == transform.forward || collision.transform.forward == -transform.forward)
         {
-            audio_src = GetComponent<AudioSource>();
-            audio_src.PlayOneShot(building_SFX);
+            GameObject gob = collision.gameObject;
+            gob.SetActive(false);
             animator.Play("ReciveObject");
+
+            if (gob.tag == "weißesSchaf" || gob.tag == "schwarzesSchaf")
+            {
+                audio_src = GetComponent<AudioSource>();
+                audio_src.PlayOneShot(building_SFX);
+            }
+
+            StartCoroutine(SpawnNext(gob));
         }
-        
-        StartCoroutine(SpawnNext(gob));
     
     }
 
@@ -37,8 +40,9 @@ public class ScissorMachine : Spawner
     IEnumerator SpawnNext(GameObject gob)
     {
 
-        yield return new WaitForSeconds(spawn_delay);
+        yield return new WaitForSeconds(spawn_delay-0.15f);
         animator.Play("SpawnObject");
+        yield return new WaitForSeconds(0.15f);
         gob.SetActive(true);
 
         if (gob.tag == "weissesSchaf" || gob.tag == "schwarzesSchaf")
