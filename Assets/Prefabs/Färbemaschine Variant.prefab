@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.536
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
         type: 3}
@@ -82,10 +82,45 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5311638
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.26063788
+      objectReference: {fileID: 0}
+    - target: {fileID: -2484921068739079471, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6189848
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.4555199
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
         type: 3}
       propertyPath: m_Name
       value: "F\xE4rbemaschine Variant"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316992658331686828, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083501151425157549, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5311638
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: ce6e5ad63cb1005459d51f6d3a0cccda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.47117484
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce6e5ad63cb1005459d51f6d3a0cccda, type: 3}
