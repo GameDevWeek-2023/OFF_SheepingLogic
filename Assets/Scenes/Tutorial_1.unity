@@ -957,7 +957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shipments
+  m_text: Sheepments
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5beea2d6edfcd24ba1c4f2f91b6afd6, type: 2}
   m_sharedMaterial: {fileID: -6025658050670444117, guid: f5beea2d6edfcd24ba1c4f2f91b6afd6,
@@ -2302,7 +2302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &441456648
 Transform:
   m_ObjectHideFlags: 0
@@ -5054,6 +5054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 2
   aufgabenText: {fileID: 567002708}
+  availableQuests: 0
+  questsCompleted: 0
   sell_fraction: 0.75
   building_removed_clip: {fileID: 8300000, guid: b7310c9edd84b73cd97c4305f324fdc5,
     type: 3}
@@ -7235,7 +7237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1509607126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7719,8 +7721,8 @@ MonoBehaviour:
   description: {fileID: 19223570}
   target_ct: {fileID: 161559285}
   toggle: {fileID: 564323717}
-  description_text: Deliver 2 bungusses
-  ct_total: 2
+  description_text: Deliver 10 sheep to the green portal
+  ct_total: 10
   gridScriptAttach: {fileID: 1802377673}
 --- !u!1 &1641623574
 GameObject:
@@ -8806,6 +8808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 2
   aufgabenText: {fileID: 567002708}
+  availableQuests: 0
+  questsCompleted: 0
   sell_fraction: 0.75
   building_removed_clip: {fileID: 8300000, guid: b7310c9edd84b73cd97c4305f324fdc5,
     type: 3}
@@ -9128,7 +9132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1894161371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10816,6 +10820,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 2
   aufgabenText: {fileID: 567002708}
+  availableQuests: 0
+  questsCompleted: 0
   sell_fraction: 0.75
   building_removed_clip: {fileID: 8300000, guid: b7310c9edd84b73cd97c4305f324fdc5,
     type: 3}

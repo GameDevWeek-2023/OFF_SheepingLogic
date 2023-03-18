@@ -963,7 +963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shipments
+  m_text: Sheepments
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5beea2d6edfcd24ba1c4f2f91b6afd6, type: 2}
   m_sharedMaterial: {fileID: -6025658050670444117, guid: f5beea2d6edfcd24ba1c4f2f91b6afd6,
@@ -6594,6 +6594,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 2
   aufgabenText: {fileID: 567002708}
+  availableQuests: 0
+  questsCompleted: 0
   sell_fraction: 0.75
   building_removed_clip: {fileID: 8300000, guid: b7310c9edd84b73cd97c4305f324fdc5,
     type: 3}
@@ -9583,7 +9585,7 @@ MonoBehaviour:
   description: {fileID: 19223570}
   target_ct: {fileID: 161559285}
   toggle: {fileID: 564323717}
-  description_text: Deliver 10 white sheep to yellow portal
+  description_text: Deliver 10 white sheep to green portal
   ct_total: 10
   gridScriptAttach: {fileID: 832149485116617464}
 --- !u!1 &1651730876
@@ -10319,6 +10321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 2
   aufgabenText: {fileID: 567002708}
+  availableQuests: 0
+  questsCompleted: 0
   sell_fraction: 0.75
   building_removed_clip: {fileID: 8300000, guid: b7310c9edd84b73cd97c4305f324fdc5,
     type: 3}
@@ -12582,6 +12586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 2
   aufgabenText: {fileID: 567002708}
+  availableQuests: 0
+  questsCompleted: 0
   sell_fraction: 0.75
   building_removed_clip: {fileID: 8300000, guid: b7310c9edd84b73cd97c4305f324fdc5,
     type: 3}
