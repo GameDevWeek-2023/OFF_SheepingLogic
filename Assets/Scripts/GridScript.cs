@@ -11,9 +11,7 @@ public class GridScript : MonoBehaviour
 {
 
     public float resolution;
-    public GameObject conveyor_build;
-    public GameObject spawner_build;
-    public GameObject despawner_build;
+    
     [SerializeField] TMP_Text aufgabenText;
 
     int aufgabenNummer = 1;

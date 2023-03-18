@@ -18,7 +18,7 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
     private void Start()
     {
-        gridScriptAttach = GameObject.Find("Terrain");
+        gridScriptAttach = GameObject.Find("terrain2");
         rb= GetComponent<Rigidbody>();
         col= GetComponent<Collider>();
         rb.isKinematic = true;
