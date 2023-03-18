@@ -13,6 +13,8 @@ public class GridScript : MonoBehaviour
     public float resolution;
     
     [SerializeField] TMP_Text aufgabenText;
+    public int availableQuests;
+    public int questsCompleted = 0;
 
     int aufgabenNummer = 1;
     
@@ -131,7 +133,7 @@ public class GridScript : MonoBehaviour
             }
         }
 
-        Debug.Log(availablePower);
+        //Debug.Log(availablePower);
 
         powerAvailable = availablePower;
 
@@ -140,7 +142,7 @@ public class GridScript : MonoBehaviour
             requiredPower += b.GetComponent<Building>().powerConsumption;
         }
 
-        Debug.Log(requiredPower);
+        //Debug.Log(requiredPower);
 
         powerRequired = requiredPower; 
     }
@@ -149,6 +151,9 @@ public class GridScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Quests
+        availableQuests = GameObject.Find("Quests").transform.childCount;
+
         togglePauseMenu(false);
         popup_panel.SetActive(false);
         fadeInOut(is_fade_in: true);
@@ -174,12 +179,16 @@ public class GridScript : MonoBehaviour
 
         money.Reset();
         research.Reset();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Quests
+        if (questsCompleted == availableQuests)
+        {
+            Debug.Log("All quests completed");
+        }
 
         power_text.text = $"{powerAvailable}/{powerRequired}";
 

@@ -11,7 +11,6 @@ public class Balloon : Building
     public float FlyTime = 3.0f;
     private float velocity = 5.0f;
 
-
     public int WhiteSheep {get; set;}
     public int BlackSheep {get; set;}
     public int SnippedSheep {get; set;}
@@ -27,7 +26,6 @@ public class Balloon : Building
 
     private void OnTriggerEnter(Collider collision)
     {
-
         if (collision.gameObject.tag == "weissesSchaf")         WhiteSheep ++;
         if (collision.gameObject.tag == "schwarzesSchaf")       BlackSheep ++;
         if (collision.gameObject.tag == "geschorenesSchaf")     SnippedSheep ++;
