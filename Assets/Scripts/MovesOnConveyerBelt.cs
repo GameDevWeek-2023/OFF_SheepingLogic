@@ -70,11 +70,12 @@ public class MovesOnConveyerBelt : MonoBehaviour
                 }
                 else
                 {
-                    vomBandgefallen = true;
                     rb.isKinematic = false;
                     rb.useGravity = true;
-                    col.isTrigger = false;
                     rb.AddForce(2*transform.forward + 1*transform.up, ForceMode.Impulse);
+                    
+                    vomBandgefallen = true;
+                    col.isTrigger = false;
                     if (isAlive)    { StartCoroutine(Fliege()); StartCoroutine(LaufeDavon()); }
                     else            { StartCoroutine(ZerstoerHeruntergefallenesObjekt()); }                
                 }
