@@ -45,7 +45,6 @@ public class MovesOnConveyerBelt : MonoBehaviour
                     // rotate sheep slowly
                     transform.forward = go.transform.forward;
 
-                    //transform.forward = go.transform.forward;
 
                     Vector3 delta = gameObject.transform.position - go.transform.position;
                     float innerp = Vector3.Dot(delta, go.transform.right);
@@ -109,14 +108,12 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
     IEnumerator Fliege()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
 
         while (transform.position.y > 0.9f)
         {
             yield return new WaitForSeconds(0.2f);
         }
-
-        yield return new WaitForSeconds(1f);
 
         rb.isKinematic = true;
         rb.useGravity = false;
