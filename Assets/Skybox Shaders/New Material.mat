@@ -86,12 +86,12 @@ Material:
     - _SunIntensity: 2
     - _UVSec: 0
     - _UpVectorPitch: -18.39
-    - _UpVectorYaw: 1.01
+    - _UpVectorYaw: 352.35
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.35661653, g: 0, b: 0.5849056, a: 0}
-    - _Color2: {r: 0.29411763, g: 0.82758945, b: 0.8784314, a: 0}
+    - _Color1: {r: 0.25792095, g: 0.6979097, b: 0.7924528, a: 0}
+    - _Color2: {r: 0.4026228, g: 0.3294118, b: 0.8392157, a: 0}
     - _Color3: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyColor1: {r: 0.37, g: 0.52, b: 0.73, a: 0}
@@ -99,5 +99,5 @@ Material:
     - _SkyColor3: {r: 0.89, g: 0.89, b: 0.89, a: 0}
     - _SunColor: {r: 1, g: 0.99, b: 0.87, a: 1}
     - _SunVector: {r: 0.269, g: 0.615, b: 0.74, a: 0}
-    - _UpVector: {r: -0.005560999, g: 0.9489311, b: -0.3154344, a: 0}
+    - _UpVector: {r: 0.041997537, g: 0.9489311, b: -0.31267554, a: 0}
   m_BuildTextureStacks: []

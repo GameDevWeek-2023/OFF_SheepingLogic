@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.2688679, g: 0.51127553, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.2928176, g: 0, b: 1, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0.2735849, b: 0.02279872, a: 1}
-  m_AmbientIntensity: 0.52
-  m_AmbientMode: 1
-  m_SubtractiveShadowColor: {r: 0.38803846, g: 0.440893, b: 0.754717, a: 1}
+  m_AmbientIntensity: 0.65
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 805e626a6997ab9488a001a2c1fe32b1, type: 2}
   m_HaloStrength: 0.453
   m_FlareStrength: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.702
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.27530512, g: 0.43005916, b: 0.640598, a: 0.702}
+  m_IndirectSpecularColor: {r: 0.28547966, g: 0.44504398, b: 0.7042672, a: 0.702}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2302,9 +2302,9 @@ RectTransform:
   m_Father: {fileID: 764873539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 183.33865, y: -567.59424}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 183.33865, y: 0}
   m_SizeDelta: {x: 326.6773, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555716403
@@ -2758,7 +2758,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.31283376, g: 0.35188633, b: 0.6981132, a: 1}
+  m_Color: {r: 1, g: 0.521079, b: 0.19339621, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

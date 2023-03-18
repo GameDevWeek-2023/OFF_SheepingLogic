@@ -41,7 +41,7 @@ public class MilkMachine : Spawner
         Spawn(gob, gob.transform.forward);
 
         // Todo schwarze Wolle
-        if (gob.gameObject.tag == "weissesSchaf" || gob.gameObject.tag == "schwarzesSchaf")   Spawn(wolle, -transform.right);
+        if (gob.tag == "weissesSchaf" || gob.tag == "schwarzesSchaf")   Spawn(wolle, -transform.right);
         
         Destroy(gob);
 
