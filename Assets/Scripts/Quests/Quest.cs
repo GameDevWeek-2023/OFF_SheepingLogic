@@ -34,19 +34,20 @@ public abstract class Quest : MonoBehaviour
         {
             toggle.GetComponent<Toggle>().isOn = true;
             
-            StartCoroutine(TriggerAnim());
+            //StartCoroutine(TriggerAnim());
+            balloon.GetComponent<Balloon>().QuestCompleted = true;
 
         }
 
     }
 
-    IEnumerator TriggerAnim()
+    void TriggerAnim()
     {
-        balloon.GetComponent<Balloon>().QuestCompleted = true;
+        //balloon.GetComponent<Balloon>().QuestCompleted = true;
         
-        yield return new WaitForSeconds(balloon.GetComponent<Balloon>().FlyTime);
+        //yield return new WaitForSeconds(balloon.GetComponent<Balloon>().FlyTime);
 
-        gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
+        //gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
 
     }
 
