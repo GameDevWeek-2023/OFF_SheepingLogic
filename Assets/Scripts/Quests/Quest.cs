@@ -14,6 +14,8 @@ public abstract class Quest : MonoBehaviour
     public int ct_total;
 
     public GameObject gridScriptAttach;
+
+    private bool complete = false;
     
     void Start()
     {
@@ -30,24 +32,23 @@ public abstract class Quest : MonoBehaviour
     void Update()
     {
         target_ct.text = GetValue().ToString() + " / " + ct_total.ToString();
-        if (fulfilled() && balloon != null)
+        if (fulfilled() && balloon != null && !complete)
         {
             toggle.GetComponent<Toggle>().isOn = true;
-            
-            //StartCoroutine(TriggerAnim());
-            balloon.GetComponent<Balloon>().QuestCompleted = true;
-
+            complete = true;
+            StartCoroutine(TriggerAnim());
         }
 
     }
 
-    void TriggerAnim()
+    IEnumerator TriggerAnim()
     {
-        //balloon.GetComponent<Balloon>().QuestCompleted = true;
+        balloon.GetComponent<Balloon>().QuestCompleted = true;
         
-        //yield return new WaitForSeconds(balloon.GetComponent<Balloon>().FlyTime);
+        yield return new WaitForSeconds(balloon.GetComponent<Balloon>().FlyTime);
 
-        //gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
+        gridScriptAttach.GetComponent<GridScript>().questsCompleted++;
+        gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
 
     }
 
