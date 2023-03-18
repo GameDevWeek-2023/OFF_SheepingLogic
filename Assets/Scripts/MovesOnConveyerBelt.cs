@@ -43,7 +43,7 @@ public class MovesOnConveyerBelt : MonoBehaviour
                 {
                     
                     // rotate sheep slowly
-                    gameObject.transform.forward = (gameObject.transform.forward + go.transform.forward * Time.deltaTime * ang_velocity *0.5f).normalized;
+                    transform.forward = go.transform.forward;
 
                     //transform.forward = go.transform.forward;
 
