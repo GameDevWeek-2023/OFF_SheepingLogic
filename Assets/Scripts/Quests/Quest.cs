@@ -14,12 +14,9 @@ public abstract class Quest : MonoBehaviour
     public int ct_total;
 
     public GameObject gridScriptAttach;
-
-    protected Counter ct;
     
     void Start()
     {
-        ct = balloon.GetComponent<Balloon>().ct;
         description.text = description_text;
         toggle.GetComponent<Toggle>().isOn = false;
     }
