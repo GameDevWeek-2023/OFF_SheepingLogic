@@ -172,6 +172,7 @@ MonoBehaviour:
     type: 3}
   hasAudioLoop: 0
   destrucible: 1
+  hasPower: 1
   animator: {fileID: 8488245503763302042}
 --- !u!82 &1770270093550408700
 AudioSource:

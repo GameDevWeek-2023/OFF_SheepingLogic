@@ -14,6 +14,7 @@ public class ScissorMachine : Spawner
 
     private void Start()
     {
+        audio_src = GetComponent<AudioSource>();
         animator.Play("PlaceObject");
     }
 
@@ -24,13 +25,12 @@ public class ScissorMachine : Spawner
             GameObject gob = collision.gameObject;
             gob.SetActive(false);
             animator.Play("ReciveObject");
-
-            if (gob.tag == "weißesSchaf" || gob.tag == "schwarzesSchaf")
+            
+            if (gob.gameObject.tag == "weißesSchaf" || gob.gameObject.tag == "schwarzesSchaf")
             {
-                audio_src = GetComponent<AudioSource>();
-                audio_src.PlayOneShot(building_SFX);
+                
             }
-
+            audio_src.PlayOneShot(building_SFX);
             StartCoroutine(SpawnNext(gob));
         }
     
@@ -45,7 +45,7 @@ public class ScissorMachine : Spawner
         yield return new WaitForSeconds(0.15f);
         gob.SetActive(true);
 
-        if (gob.tag == "weissesSchaf" || gob.tag == "schwarzesSchaf")
+        if (gob.gameObject.tag == "weissesSchaf" || gob.gameObject.tag == "schwarzesSchaf")
         {
             Spawn(geschorenes_schaf, gob.transform.forward);
 
