@@ -25,10 +25,13 @@ public class PeriodicSpawner : Spawner
 
         float t = Time.time;
         
-        if (t - last_spawn_time > spawn_delay-0.15f&&!playedAnimation)
+        if (t - last_spawn_time > spawn_delay-0.15f && !playedAnimation)
         {
-            animator.Play("SpawnObject");
-            playedAnimation = true;
+            if (hasPower)
+            {
+                animator.Play("SpawnObject");
+                playedAnimation = true;
+            }
         }
 
         if (t - last_spawn_time > spawn_delay)

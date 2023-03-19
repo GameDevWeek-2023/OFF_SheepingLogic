@@ -164,8 +164,15 @@ public class GridScript : MonoBehaviour
     void Start()
     {
         //Quests
-        availableQuests = GameObject.Find("Quests").transform.childCount;
-
+        if (GameObject.Find("Quests") != null)
+        {
+            availableQuests = GameObject.Find("Quests").transform.childCount;
+        }
+        else
+        {
+            availableQuests = 0;
+        }
+        
         togglePauseMenu(false);
         outroPanel.SetActive(false);
         popup_panel.SetActive(false);

@@ -13,7 +13,7 @@ public abstract class Spawner : Building
     {
         if (!hasPower) { return; }
         Instantiate(spawn_object,
-                gameObject.transform.position + dir_normed * 1.7f + new Vector3(0.0f, spawn_height, 0.0f),
+                gameObject.transform.position + dir_normed * 2f + new Vector3(0.0f, spawn_height, 0.0f),
                 Quaternion.LookRotation(dir_normed,Vector3.up));
                 
     }
