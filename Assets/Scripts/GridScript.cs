@@ -182,7 +182,7 @@ public class GridScript : MonoBehaviour
         audio_src = GetComponent<AudioSource>();
 
         arrow = arrowPrefab;
-        SetBuilding(initial_building);
+        SetBuilding(initial_building, true);
         
         powerAvailable = 10;
 
@@ -430,16 +430,17 @@ public class GridScript : MonoBehaviour
         return new Vector3(x, 0.0f, z);
     }
 
-    public void SetBuilding(GameObject building)
+    public void SetBuilding(GameObject building, bool init=false)
     {
-        
-        Object.Destroy(building_cursor);
-        Object.Destroy(arrow);
+        if (!init)
+        {
+            Object.Destroy(building_cursor);
+            Object.Destroy(arrow);
+        }
 
         building_to_spawn = building;
         
         building_cursor = Instantiate(building, Vector3.zero, build_rotation);
-        arrow = Instantiate(arrow, Vector3.zero, build_rotation);
 
         arrow = Instantiate(arrow, Vector3.zero, build_rotation);
         SetMaterial();
