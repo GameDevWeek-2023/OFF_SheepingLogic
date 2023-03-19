@@ -28,7 +28,6 @@ public class MainMenuScripts : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         blackPanel.SetActive(false);
         audioSrc.clip = audioClip;
-        playButton.onClick.AddListener(() => StartCoroutine("GoToSceneCorooutine"));
     }
 
     private void Update()
