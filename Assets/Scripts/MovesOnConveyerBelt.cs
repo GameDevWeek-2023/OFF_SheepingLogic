@@ -13,7 +13,7 @@ public class MovesOnConveyerBelt : MonoBehaviour
 
     private GameObject gridScriptAttach;
 
-    float ang_velocity = 4.0f;
+    float ang_velocity = 3.0f;
     float speed_factor = 5.0f; 
 
     private void Start()
@@ -85,16 +85,16 @@ public class MovesOnConveyerBelt : MonoBehaviour
         else if (move_freely)
         {
 
-            Vector3 temp = transform.position;
-            temp.y = 0.0f;
-            transform.position = temp;
+                Vector3 temp = transform.position;
+                temp.y = 0.0f;
+                transform.position = temp;
 
-            Vector3 grav = gridScriptAttach.GetComponent<GridScript>().GetGravity(transform.position); 
+                Vector3 grav = gridScriptAttach.GetComponent<GridScript>().GetGravity(transform.position);
 
             gameObject.transform.forward = (gameObject.transform.forward + grav * Time.deltaTime * ang_velocity).normalized;
 
-            gameObject.transform.position += 
-                speed_factor * grav * velocity * Time.deltaTime;
+                gameObject.transform.position += 
+                    speed_factor * transform.forward * velocity * Time.deltaTime;
 
         }
 
@@ -123,9 +123,7 @@ public class MovesOnConveyerBelt : MonoBehaviour
     IEnumerator LaufeDavon()
     {
         
-        // yield return new WaitForSeconds(1);
-        
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(5);
         Object.Destroy(gameObject);
     }
 

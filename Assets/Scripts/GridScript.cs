@@ -535,7 +535,7 @@ public class GridScript : MonoBehaviour
         foreach (GameObject go in buildings)
         {
 
-            float r = Mathf.Min(Vector3.Distance(go.transform.position, pos), 1.0f);
+            float r = Mathf.Max(Vector3.Distance(go.transform.position, pos), 0.1f);
             grav += (1 / Mathf.Pow(r, 2)) * (pos - go.transform.position).normalized;
 
         }
