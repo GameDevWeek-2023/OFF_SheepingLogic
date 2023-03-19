@@ -48,7 +48,7 @@ public abstract class Quest : MonoBehaviour
         yield return new WaitForSeconds(balloon.GetComponent<Balloon>().FlyTime);
 
         gridScriptAttach.GetComponent<GridScript>().questsCompleted++;
-        gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
+        //gridScriptAttach.GetComponent<GridScript>().delete_building_from_grid(balloon);
 
     }
 

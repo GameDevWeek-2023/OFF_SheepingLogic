@@ -11,6 +11,7 @@ public class MainMenuScripts : MonoBehaviour
     public Button playButton;
     public GameObject menuItems;
     public GameObject optionsPanel;
+    public GameObject levelPanel;
 
     public AudioMixer audioMixer;
     public AudioClip audioClip;
@@ -21,12 +22,13 @@ public class MainMenuScripts : MonoBehaviour
     {
         blackPanel.GetComponent<CanvasRenderer>().SetAlpha(0);
         blackPanel.GetComponent<CanvasRenderer>().SetAlpha(1);
-        fade(0);
+        Fade(0);
         optionsPanel.SetActive(false);
+        levelPanel.SetActive(false);
         audioSrc = GetComponent<AudioSource>();
-        //blackPanel.SetActive(false);
+        blackPanel.SetActive(false);
         audioSrc.clip = audioClip;
-        playButton.onClick.AddListener(() => StartCoroutine("GoToScene"));
+        playButton.onClick.AddListener(() => StartCoroutine("GoToSceneCorooutine"));
     }
 
     private void Update()
@@ -78,15 +80,35 @@ public class MainMenuScripts : MonoBehaviour
 
     }
 
-    public IEnumerator GoToScene()
+    public void toggleLevelSelect(bool value)
     {
-        audioSrc.Play();
-        fade(1f);
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadSceneAsync("SampleScene");
+        if (value == true)
+        {
+            menuItems.SetActive(false);
+            levelPanel.SetActive(true);
+        }
+        else
+        {
+            menuItems.SetActive(true);
+            levelPanel.SetActive(false);
+        }
+
     }
 
-    public void fade(float toAlpha)
+    public void GoToScene(int sceneIndex)
+    {
+        StartCoroutine(GoToSceneCoroutine(sceneIndex));
+    }
+
+    public IEnumerator GoToSceneCoroutine(int sceneIndex)
+    {
+        audioSrc.Play();
+        Fade(1f);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadSceneAsync(sceneIndex);
+    }
+
+    public void Fade(float toAlpha)
     {
         blackPanel.SetActive(true);
         blackPanel.GetComponent<Image>().CrossFadeAlpha(toAlpha, 2.0f, false);

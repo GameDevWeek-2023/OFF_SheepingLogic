@@ -61,6 +61,8 @@ public class GridScript : MonoBehaviour
 
     public bool isOverGUI = false;
     public GameObject fadePanel;
+    public GameObject introPanel;
+    public GameObject outroPanel;
     public GameObject popup_panel;
     public TMP_Text popup_Text;
 
@@ -75,6 +77,16 @@ public class GridScript : MonoBehaviour
         popup_panel.SetActive(true);
         yield return new WaitForSeconds(duration);
         popup_panel.SetActive(false);
+    }
+
+    public void HideIntroPanel()
+    {
+        introPanel.SetActive(false);
+    }
+
+    public void ShowOutroPanel()
+    {
+        outroPanel.SetActive(true);
     }
 
     //Pause Menu
@@ -155,6 +167,7 @@ public class GridScript : MonoBehaviour
         availableQuests = GameObject.Find("Quests").transform.childCount;
 
         togglePauseMenu(false);
+        outroPanel.SetActive(false);
         popup_panel.SetActive(false);
         fadeInOut(is_fade_in: true);
         fadePanel.GetComponent<CanvasRenderer>().SetAlpha(0);
@@ -185,9 +198,11 @@ public class GridScript : MonoBehaviour
     void Update()
     {
         //Quests
+        Debug.Log(questsCompleted.ToString() + availableQuests.ToString());
         if (questsCompleted == availableQuests)
         {
             Debug.Log("All quests completed");
+            ShowOutroPanel();
         }
 
         power_text.text = $"{powerAvailable}/{powerRequired}";
@@ -503,11 +518,6 @@ public class GridScript : MonoBehaviour
     public void ChangePower(int amount)
     {
         powerAvailable += amount;
-    }
-
-    public void HideIntroPanel()
-    {
-        GameObject.Find("IntroPanel").SetActive(false);
     }
 
     public Vector3 GetGravity (Vector3 pos)
