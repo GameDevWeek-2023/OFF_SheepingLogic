@@ -1853,8 +1853,8 @@ MonoBehaviour:
   description: {fileID: 1651730878}
   target_ct: {fileID: 554418207}
   toggle: {fileID: 1894161370}
-  description_text: Deliver 10 shorn sheep to orange portal
-  ct_total: 10
+  description_text: Deliver 5 shorn sheep to orange portal
+  ct_total: 5
   gridScriptAttach: {fileID: 832149485116617464}
 --- !u!1001 &235193473
 PrefabInstance:
@@ -10803,8 +10803,8 @@ MonoBehaviour:
   description: {fileID: 19223570}
   target_ct: {fileID: 161559285}
   toggle: {fileID: 564323717}
-  description_text: Deliver 10 white sheep to green portal
-  ct_total: 10
+  description_text: Deliver 5 white sheep to green portal
+  ct_total: 5
   gridScriptAttach: {fileID: 832149485116617464}
 --- !u!1 &1651730876
 GameObject:
