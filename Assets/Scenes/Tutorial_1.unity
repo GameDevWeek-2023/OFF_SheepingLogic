@@ -6337,7 +6337,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5334037120295717518}
         m_TargetAssemblyTypeName: GridScript, Assembly-CSharp
         m_MethodName: togglePauseMenu
         m_Mode: 6
@@ -6349,7 +6349,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5334037120295717518}
         m_TargetAssemblyTypeName: GridScript, Assembly-CSharp
         m_MethodName: changeScene
         m_Mode: 3
@@ -7930,7 +7930,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5334037120295717518}
         m_TargetAssemblyTypeName: GridScript, Assembly-CSharp
         m_MethodName: togglePauseMenu
         m_Mode: 6
@@ -7942,7 +7942,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5334037120295717518}
         m_TargetAssemblyTypeName: GridScript, Assembly-CSharp
         m_MethodName: changeScene
         m_Mode: 3
@@ -9034,7 +9034,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5334037120295717518}
         m_TargetAssemblyTypeName: GridScript, Assembly-CSharp
         m_MethodName: togglePauseMenu
         m_Mode: 6
