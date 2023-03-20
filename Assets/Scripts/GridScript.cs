@@ -430,6 +430,11 @@ public class GridScript : MonoBehaviour
         return new Vector3(x, 0.0f, z);
     }
 
+    public void SetBuilding(GameObject gameObject)
+    {
+        SetBuilding(gameObject, false);
+    }
+
     public void SetBuilding(GameObject building, bool init=false)
     {
         if (!init)
